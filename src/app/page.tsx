@@ -1,4 +1,4 @@
-"use client"
+"use client";
 // src/app/page.tsx
 import { useEffect, useState } from 'react';
 import Image from "next/image";
@@ -9,11 +9,14 @@ import Footer from "./Footer";
 type User = {
   id: number;
   name: string;
+  email: string;
+  age: number;
 };
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]); // State for storing users
   const [error, setError] = useState<string | null>(null); // State for error handling
+  const [loading, setLoading] = useState<boolean>(true); // State for loading status
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -27,6 +30,8 @@ export default function Home() {
       } catch (error) {
         console.error('Failed to fetch users:', error); // Error handling
         setError('Failed to load users.'); // Set error message
+      } finally {
+        setLoading(false); // Set loading to false regardless of success or error
       }
     };
 
@@ -48,18 +53,22 @@ export default function Home() {
             </div>
           </div>
           {/* User List Section */}
-        <div>
-          <h1>User List</h1>
-          {error ? (
-            <p>{error}</p> // Show error message if any
-          ) : (
-            <ul>
-              {users.map(user => (
-                <h1><li key={user.id}>{user.name}</li></h1>
-              ))}
-            </ul>
-          )}
-        </div>
+          <div>
+            <h1>User List</h1>
+            {loading ? (
+              <p>Loading users...</p> // Show loading message
+            ) : error ? (
+              <p>{error}</p> // Show error message if any
+            ) : (
+              <ul>
+                {users.map(user => (
+                  <li className={styles.databaseUsers} key={user.id}>
+                    {user.name} - {user.email} - {user.age} {/* Display user properties */}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <div className={styles.logoContainer}>
             <Image
               src="/images/One-stop-Shop-Logo.jpg"

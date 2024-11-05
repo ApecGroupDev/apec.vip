@@ -191,3 +191,7 @@
   background-color: var(--button-primary-hover); /* Background on hover */
   color: white; /* Text color on hover */
 }
+
+.databaseUsers {
+  font-size: x-large;
+}
