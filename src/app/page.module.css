@@ -9,7 +9,7 @@
   display: grid;
   grid-template-rows: 20px 1fr 20px;
   align-items: center;
-  justify-items: center;
+  /* Keep header aligned to the top */
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
@@ -29,67 +29,65 @@
 
 .main {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  /* Align items to the top */
+  justify-content: space-between;
+  /* Space out the welcome text and logo */
+  width: 100%;
+  /* Full width */
   gap: 32px;
+  /* Space between elements */
   grid-row-start: 2;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
+.contentContainer {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space out the items */
+  gap: 32px; /* Space between text and logo */
 }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
+.welcomeContainer {
+  max-width: 50%; /* Limit the width of the text container */
 }
 
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
+.welcomeText {
+  font-size: 2.5rem; /* Larger font size for the welcome message */
+  font-weight: bold; /* Bold text */
+  margin-bottom: 16px; /* Space below the heading */
 }
 
-.ctas {
+.subtitle {
+  font-size: 1.5rem; /* Medium font size for the subtitle */
+  margin-bottom: 12px; /* Space below the subtitle */
+}
+
+.description {
+  font-size: 1.2rem; /* Smaller font size for the description */
+  margin-bottom: 24px; /* Space below the description */
+}
+
+/* Button styles remain the same */
+.buttonContainer {
+  display: flex; /* Use flexbox for horizontal layout */
+  gap: 16px; /* Space between buttons */
+  margin-top: 16px; /* Space above the buttons */
+}
+
+.logoContainer {
   display: flex;
-  gap: 16px;
-}
-
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+  /* Allows for alignment of logo if needed */
   justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  /* Center logo horizontally */
+  flex: 1;
+  /* Allow it to take available space */
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 180px;
+.logo {
+  max-width: 100%;
+  /* Ensure logo is responsive */
+  height: auto;
+  /* Maintain aspect ratio */
 }
 
 .footer {
@@ -133,25 +131,9 @@ a.secondary {
   }
 
   .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
     flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
+    /* Stack items in column on small screens */
+    align-items: center;
   }
 
   .footer {
@@ -165,4 +147,47 @@ a.secondary {
   .logo {
     filter: invert();
   }
+}
+
+.buttonContainer {
+  display: flex;
+  /* Use flexbox for horizontal layout */
+  gap: 16px;
+  /* Space between buttons */
+  margin-top: 24px;
+  /* Space above the buttons */
+}
+
+/* Primary and Secondary Button styles */
+.primaryButton {
+  background-color: var(--button-primary-hover); /* Change to your desired primary color */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 12px 24px; /* Padding for a bigger button */
+  font-size: 1rem; /* Font size */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.primaryButton:hover {
+  background-color: #2a2a2a; /* Darker shade on hover */
+}
+
+.secondaryButton {
+  background-color: transparent; /* Transparent background */
+  color: var(--button-primary-hover); /* Change to your desired secondary color */
+  border: 2px solid var(--button-primary-hover); /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 12px 24px; /* Padding for a bigger button */
+  font-size: 1rem; /* Font size */
+  font-weight: bold; /* Bold text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.secondaryButton:hover {
+  background-color: var(--button-primary-hover); /* Background on hover */
+  color: white; /* Text color on hover */
 }

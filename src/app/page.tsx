@@ -1,95 +1,36 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import ThemeToggle from "./ThemeToggle"; // Import the ThemeToggle component
+import Header from "./Header"; // Import the Header component
+import Footer from "./Footer";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <Header /> {/* Include the header */}
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+        <div className={styles.contentContainer}>
+          <div className={styles.welcomeContainer}>
+            <h1 className={styles.welcomeText}>Welcome Bob</h1> {/* Welcome message */}
+            <h3 className={styles.subtitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere culpa et aperiam excepturi esse rem minus, quia totam inventore cumque.</h3>
+            <h5 className={styles.description}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, ex!</h5>
+            <div className={styles.buttonContainer}>
+              <button className={styles.primaryButton}>Button 1</button>
+              <button className={styles.secondaryButton}>Button 2</button>
+            </div>
+          </div>
+          <div className={styles.logoContainer}>
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/images/One-stop-Shop-Logo.jpg"
+              alt="One Stop Shop logo"
+              width={500}
+              height={500}
+              priority
             />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }

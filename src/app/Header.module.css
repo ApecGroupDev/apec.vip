@@ -1,0 +1,52 @@
+.header {
+  background-color: var(--background);
+  /* Use CSS variables for theming */
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  /* Space between nav items */
+}
+
+.navItem {
+  color: var(--foreground);
+  /* Use CSS variables for theming */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navItem:hover {
+  color: #0070f3;
+  /* Change color on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    /* Hide the nav on smaller screens */
+  }
+
+  .container {
+    flex-direction: column;
+  }
+}
