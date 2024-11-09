@@ -1,7 +1,6 @@
-// src/app/[user]/page.tsx
-
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link'; // Import Link component
 import styles from '../page.module.css';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -13,17 +12,18 @@ interface UserPageProps {
 // Fetch user data from the API
 async function getUserData(userName: string) {
   try {
-    // Use an absolute URL with the dynamic userName
-    const response = await fetch(`http://localhost:3000/api/users?user=${encodeURIComponent(userName)}`);
+    const response = await fetch(`http://localhost:3000/api/users?user=${encodeURIComponent(userName)}`, {
+      cache: 'no-store', // To always fetch latest data
+    });
 
     if (!response.ok) {
-      throw new Error('User not found');
+      console.error(`Failed to fetch user data: ${response.statusText}`);
+      return null;
     }
 
-    const user = await response.json();
-    return user;
+    return await response.json();
   } catch (error) {
-    console.error(error);
+    console.error("An error occurred while fetching user data:", error);
     return null;
   }
 }
@@ -35,10 +35,9 @@ export default async function UserPage({ params }: UserPageProps) {
   const userData = await getUserData(user);
 
   if (!userData) {
-    notFound(); // Trigger a 404 page if the user does not exist
+    notFound();
   }
 
-  // Format the user name by splitting at hyphens (or other characters if needed)
   const formattedName = user
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -54,7 +53,9 @@ export default async function UserPage({ params }: UserPageProps) {
             <h3 className={styles.subtitle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h3>
             <h5 className={styles.description}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h5>
             <div className={styles.buttonContainer}>
-              <button className={styles.primaryButton}>Button 1</button>
+              <Link href={`/${user}/details`}>
+                <button className={styles.primaryButton}>Button 1</button>
+              </Link>
               <button className={styles.secondaryButton}>Button 2</button>
             </div>
           </div>
@@ -64,6 +65,7 @@ export default async function UserPage({ params }: UserPageProps) {
               alt="One Stop Shop logo"
               width={500}
               height={500}
+              layout="intrinsic"
               priority
             />
           </div>
