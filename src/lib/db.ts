@@ -5,7 +5,7 @@ import mysql from 'mysql2/promise';
 const db = mysql.createPool({
   host: 'localhost',
   user: 'apecVIPdev', // your database username
-  password: 'G.7KsJ3ndwbC]*Uq', // your database password
+  password: 'Z112345!', // your database password
   database: 'apec-vip', // your database name
 });
 

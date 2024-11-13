@@ -1,19 +1,19 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link'; // Import Link component
+import Link from 'next/link';
 import styles from '../page.module.css';
 import Header from '../Header';
 import Footer from '../Footer';
 
 interface UserPageProps {
-  params: { user: string }; // dynamic user name param
+  params: Promise<{ user: string }>; // Change to Promise
 }
 
 // Fetch user data from the API
 async function getUserData(userName: string) {
   try {
     const response = await fetch(`http://localhost:3000/api/users?user=${encodeURIComponent(userName)}`, {
-      cache: 'no-store', // To always fetch latest data
+      cache: 'no-store',
     });
 
     if (!response.ok) {
@@ -29,7 +29,7 @@ async function getUserData(userName: string) {
 }
 
 export default async function UserPage({ params }: UserPageProps) {
-  const { user } = params;
+  const { user } = await params; // Await params here
 
   // Fetch user data before rendering the page
   const userData = await getUserData(user);
@@ -54,7 +54,7 @@ export default async function UserPage({ params }: UserPageProps) {
             <h5 className={styles.description}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</h5>
             <div className={styles.buttonContainer}>
               <Link href={`/${user}/details`}>
-                <button className={styles.primaryButton}>Button 1</button>
+                <button className={styles.primaryButton}>Proceed</button>
               </Link>
               <button className={styles.secondaryButton}>Button 2</button>
             </div>
