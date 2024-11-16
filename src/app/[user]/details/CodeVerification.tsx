@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import styles from '../../page.module.css';
 
 interface CodeVerificationProps {
   specialCode: string;
   userData: { name: string; email: string; age: number; special_code: string }; // Add userData type
 }
 
-const CodeVerification: React.FC<CodeVerificationProps> = ({ specialCode, userData }) => {
+const CodeVerification: React.FC<CodeVerificationProps> = ({ userData }) => {
   const [enteredCode, setEnteredCode] = useState('');
   const [isVerified, setIsVerified] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -40,7 +39,8 @@ const CodeVerification: React.FC<CodeVerificationProps> = ({ specialCode, userDa
       } else {
         setVerificationError('Invalid code');
       }
-    } catch (error) {
+    } catch (error: unknown) { // Specify 'any' type for the error
+      console.error(error); // Log the error
       setVerificationError('Error verifying code');
     }
   };
@@ -54,7 +54,7 @@ const CodeVerification: React.FC<CodeVerificationProps> = ({ specialCode, userDa
   }
 
   return (
-    <div className={styles.codeVerificationContainer}>
+    <div>
       {!isVerified ? (
         <div>
           <h2>Enter Code to View Details</h2>
@@ -63,9 +63,8 @@ const CodeVerification: React.FC<CodeVerificationProps> = ({ specialCode, userDa
             value={enteredCode}
             onChange={handleCodeChange}
             placeholder="Enter special code"
-            className={styles.codeInput}
           />
-          <button onClick={handleVerify} className={styles.primaryButton}>Verify Code</button>
+          <button onClick={handleVerify}>Verify Code</button>
           {verificationError && <p>{verificationError}</p>}
         </div>
       ) : (

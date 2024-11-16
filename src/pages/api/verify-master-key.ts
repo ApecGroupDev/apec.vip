@@ -1,6 +1,11 @@
-// api/verify-master-key.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import db from '../../lib/db';
+import { RowDataPacket } from 'mysql2';
+
+// Define the type for the row structure returned by the query
+interface ConfigRow extends RowDataPacket {
+  master_code: string;
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { master_code } = req.query;
@@ -11,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // Query the config table for the master_code
-    const [configRows]: [any[], any] = await db.query('SELECT master_code FROM config WHERE id = 1');
+    const [configRows]: [ConfigRow[], unknown] = await db.query('SELECT master_code FROM config WHERE id = 1');
 
     if (configRows.length === 0) {
       return res.status(404).json({ message: 'Config not found' });

@@ -1,0 +1,18 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "apec.VIP local database",
+      "group": "apec.VIP development",
+      "username": "apecVIPdev",
+      "database": "apec-vip"
+    }
+  ]
+}

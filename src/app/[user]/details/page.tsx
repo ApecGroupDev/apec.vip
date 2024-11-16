@@ -2,20 +2,25 @@
 
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
-import styles from '../../page.module.css';
 import Header from '../../Header';
-import Footer from '../../Footer';
 import CodeVerification from './CodeVerification';
 
+// Define a type for the user data
+interface UserData {
+  name: string;
+  email: string;
+  age: number;
+  special_code: string;
+}
+
 interface UserDetailsProps {
-  params: Promise<{ user: string }>; // Update to Promise type
+  params: Promise<{ user: string }>;
 }
 
 export default function UserDetails({ params }: UserDetailsProps) {
-  const [userData, setUserData] = useState<any>(null); // Adjust type as needed
+  const [userData, setUserData] = useState<UserData | null>(null); // More specific type
   const [loading, setLoading] = useState(true);
-
-  const [user, setUser] = useState<string | null>(null); // State to store the user name
+  const [user, setUser] = useState<string | null>(null);
 
   // Fetch user data from the API
   const getUserData = async (userName: string) => {
@@ -61,21 +66,20 @@ export default function UserDetails({ params }: UserDetailsProps) {
   }, [user]);
 
   if (loading) {
-    return <div>Loading...</div>; // Optional: loading state
+    return <div>Loading...</div>;
   }
 
-  const formattedName = user
-    ?.split('-')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ') || '';
+  // Ensure userData is set before rendering CodeVerification
+  if (!userData) {
+    return <div>User data not found</div>;
+  }
 
   return (
-    <div className={styles.page}>
+    <div>
       <Header />
-      <main className={styles.main}>
-        <CodeVerification specialCode={userData?.special_code} userData={userData} />
+      <main>
+        <CodeVerification specialCode={userData.special_code} userData={userData} />
       </main>
-      <Footer />
     </div>
   );
 }

@@ -1,5 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import db from '../../lib/db';
+import { RowDataPacket } from 'mysql2';
+
+// Define the type for the rows returned by the query
+interface UserRow extends RowDataPacket {
+  special_code: string;
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { user, special_code } = req.query;
@@ -10,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // Query the database for the user and special_code
-    const [rows]: [any[], any] = await db.query('SELECT special_code FROM users WHERE name = ?', [user]);
+    const [rows]: [UserRow[], unknown] = await db.query('SELECT special_code FROM users WHERE name = ?', [user]);
 
     if (rows.length === 0) {
       return res.status(404).json({ message: 'User not found' });

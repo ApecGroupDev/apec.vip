@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './Header.module.css'; // Create a separate CSS module for styles
 import ThemeToggle from "./ThemeToggle"; // Import the ThemeToggle component
 

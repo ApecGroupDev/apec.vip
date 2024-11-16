@@ -1,4 +1,3 @@
-// src/pages/api/users.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import db from '../../lib/db';
 import { RowDataPacket } from 'mysql2';
@@ -22,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     console.log('Formatted user for DB query:', formattedUser);
 
     // Query the database for the user with the formatted name
-    const [rows]: [User[], any] = await db.query('SELECT * FROM users WHERE name = ?', [formattedUser]);
+    const [rows]: [User[], unknown[]] = await db.query('SELECT * FROM users WHERE name = ?', [formattedUser]);
 
     if (rows.length === 0) {
       return res.status(404).json({ message: 'User not found' });
