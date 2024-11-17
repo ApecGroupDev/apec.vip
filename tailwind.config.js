@@ -6,7 +6,11 @@ module.exports = {
     './src/app/**/*.{js,ts,jsx,tsx}',        // Adjusted path to include src
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'custom-red': '#e82228', // Custom color
+      },
+    },
   },
   plugins: [],
 };
