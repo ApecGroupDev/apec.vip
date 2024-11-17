@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Header from '../Header';
 
 interface UserPageProps {
   params: Promise<{ user: string }>;
@@ -39,7 +38,6 @@ export default async function UserPage({ params }: UserPageProps) {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-indigo-500 to-blue-600">
-      <Header />
       <main className="flex-grow flex items-center justify-center px-6 py-20">
         <div className="bg-white bg-opacity-90 shadow-lg rounded-3xl p-12 max-w-lg w-full text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl">
           {/* Welcome Section */}

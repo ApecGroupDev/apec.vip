@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
-import Header from '../../Header';
 import CodeVerification from './CodeVerification';
 
 // Define a type for the user data
@@ -76,7 +75,6 @@ export default function UserDetails({ params }: UserDetailsProps) {
 
   return (
     <div>
-      <Header />
       <main>
         <CodeVerification specialCode={userData.special_code} userData={userData} />
       </main>
