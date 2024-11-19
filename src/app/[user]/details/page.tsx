@@ -24,7 +24,7 @@ export default function UserDetails({ params }: UserDetailsProps) {
   // Fetch user data from the API
   const getUserData = async (userName: string) => {
     try {
-      const response = await fetch(`/api/users?user=${encodeURIComponent(userName)}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users?user=${encodeURIComponent(userName)}`, {
         cache: 'no-store',
       });
 

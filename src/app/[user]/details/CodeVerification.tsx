@@ -18,7 +18,7 @@ const CodeVerification: React.FC<CodeVerificationProps> = ({ userData }) => {
   const handleVerify = async () => {
     try {
       // First, try the special_code
-      let response = await fetch(`/api/verify-special-code?user=${userData.name}&special_code=${enteredCode}`, {
+      let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/verify-special-code?user=${userData.name}&special_code=${enteredCode}`, {
         method: 'GET',
       });
 
@@ -29,7 +29,7 @@ const CodeVerification: React.FC<CodeVerificationProps> = ({ userData }) => {
       }
 
       // If special_code doesn't match, check the master_code via the new API
-      response = await fetch(`/api/verify-master-key?master_code=${enteredCode}`, {
+      response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/verify-master-key?master_code=${enteredCode}`, {
         method: 'GET',
       });
 
@@ -39,11 +39,12 @@ const CodeVerification: React.FC<CodeVerificationProps> = ({ userData }) => {
       } else {
         setVerificationError('Invalid code');
       }
-    } catch (error: unknown) { // Specify 'any' type for the error
-      console.error(error); // Log the error
+    } catch (error: unknown) {
+      console.error(error);
       setVerificationError('Error verifying code');
     }
   };
+
 
   useEffect(() => {
     setLoading(false);

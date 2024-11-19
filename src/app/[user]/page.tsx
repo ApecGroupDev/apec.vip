@@ -6,8 +6,18 @@ interface UserPageProps {
 }
 
 async function getUserData(userName: string) {
+  // Get the base URL from environment variable
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || ''; // Default to empty string if not defined
+
+  if (!baseUrl) {
+    console.error("Base URL is not defined");
+    return null;
+  }
+
+  const url = new URL(`/api/users?user=${encodeURIComponent(userName)}`, baseUrl); // Construct the full URL
+
   try {
-    const response = await fetch(`/api/users?user=${encodeURIComponent(userName)}`, {
+    const response = await fetch(url.toString(), {
       cache: 'no-store',
     });
 
