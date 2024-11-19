@@ -7,7 +7,7 @@ interface UserPageProps {
 
 async function getUserData(userName: string) {
   try {
-    const response = await fetch(`http://localhost:3000/api/users?user=${encodeURIComponent(userName)}`, {
+    const response = await fetch(`/api/users?user=${encodeURIComponent(userName)}`, {
       cache: 'no-store',
     });
 
