@@ -55,7 +55,7 @@ export default function LoginPage() {
               placeholder="Enter access code"
               value={masterCode}
               onChange={(e) => setMasterCode(e.target.value)}
-              className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900" // Ensure text is visible
             />
           </div>
           <button
