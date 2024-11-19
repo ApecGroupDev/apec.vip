@@ -44,19 +44,34 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <h1>Admin Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter access code"
-          value={masterCode}
-          onChange={(e) => setMasterCode(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white">
+      <div className="bg-white p-12 rounded-xl shadow-xl max-w-md w-full space-y-8">
+        <h1 className="text-3xl font-extrabold text-center text-blue-600">Admin Login</h1>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Access Code</label>
+            <input
+              type="text"
+              placeholder="Enter access code"
+              value={masterCode}
+              onChange={(e) => setMasterCode(e.target.value)}
+              className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 focus:outline-none transition duration-200 transform hover:scale-105"
+          >
+            Login
+          </button>
+        </form>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && (
+          <div className="text-red-600 font-semibold mt-4">
+            <p>{error}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
