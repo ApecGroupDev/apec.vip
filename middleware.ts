@@ -1,13 +1,22 @@
 import Cors from 'cors';
 import { NextRequest, NextResponse } from 'next/server';
 
-// Get the API base URL from environment variable or fallback to production API URL
-const allowedOrigin = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://apec-vip.vercel.app';
+// Define a list of allowed origins (this could include local development, preview, and production URLs)
+const allowedOrigins = [
+  process.env.NEXT_PUBLIC_API_BASE_URL || 'https://apec-vip.vercel.app', // Production URL
+  'http://localhost:3000', // Local development URL
+];
 
 // Initialize CORS middleware
 const cors = Cors({
   methods: ['GET', 'POST', 'OPTIONS'], // Allow GET, POST, and OPTIONS methods
-  origin: allowedOrigin, // Dynamically set the allowed origin
+  origin: (origin: string | undefined, callback: Function) => {
+    // If origin is not present (like when local testing), allow it
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('CORS policy: Origin not allowed'), false);
+  },
 });
 
 // Helper function to run the middleware
