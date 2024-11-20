@@ -116,98 +116,124 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-4 text-gray-700">Admin Dashboard</h1>
+    <div className="min-h-screen bg-gray-100 py-8 px-4">
+      <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        {/* Header Section */}
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300"
+          >
+            Logout
+          </button>
+        </div>
 
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white px-4 py-2 rounded mb-6"
-        >
-          Logout
-        </button>
-
-        <h2 className="text-lg font-semibold mb-6 text-gray-600">User List</h2>
-
-        <div className="overflow-x-auto mb-8">
-          <table className="min-w-full bg-white border border-gray-200">
+        {/* User List Section */}
+        <h2 className="text-xl font-semibold mb-4 text-gray-700">User List</h2>
+        <div className="overflow-x-auto mb-8 border rounded-lg">
+          <table className="min-w-full bg-white border-collapse">
             <thead>
-              <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                <th className="py-3 px-6 text-left">ID</th>
-                <th className="py-3 px-6 text-left">Name</th>
-                <th className="py-3 px-6 text-left">Email</th>
-                <th className="py-3 px-6 text-left">Age</th>
-                <th className="py-3 px-6 text-left">Special Code</th>
-                <th className="py-3 px-6 text-left">Actions</th>
+              <tr className="bg-gray-100 text-gray-600 uppercase text-sm">
+                <th className="py-3 px-6 text-left font-medium">ID</th>
+                <th className="py-3 px-6 text-left font-medium">Name</th>
+                <th className="py-3 px-6 text-left font-medium">Email</th>
+                <th className="py-3 px-6 text-left font-medium">Age</th>
+                <th className="py-3 px-6 text-left font-medium">Special Code</th>
+                <th className="py-3 px-6 text-left font-medium">Actions</th>
               </tr>
             </thead>
-            <tbody className="text-gray-700 text-sm font-light">
-              {users.map(user => (
-                <tr key={user.id} className="border-b border-gray-200 hover:bg-gray-100">
+            <tbody className="text-gray-700 text-sm">
+              {users.map((user) => (
+                <tr
+                  key={user.id}
+                  className="border-t hover:bg-gray-50 transition"
+                >
                   {editingUserId === user.id ? (
                     <>
-                      <td className="py-3 px-6 text-left">{user.id}</td>
-                      <td className="py-3 px-6 text-left">
+                      <td className="py-3 px-6">{user.id}</td>
+                      <td className="py-3 px-6">
                         <input
                           type="text"
-                          value={editedUser.name || ''}
-                          onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-                          className="border p-2 w-full"
+                          value={editedUser.name || ""}
+                          onChange={(e) =>
+                            setEditedUser({ ...editedUser, name: e.target.value })
+                          }
+                          className="border w-full p-2 rounded"
                         />
                       </td>
-                      <td className="py-3 px-6 text-left">
+                      <td className="py-3 px-6">
                         <input
                           type="email"
-                          value={editedUser.email || ''}
-                          onChange={(e) => setEditedUser({ ...editedUser, email: e.target.value })}
-                          className="border p-2 w-full"
+                          value={editedUser.email || ""}
+                          onChange={(e) =>
+                            setEditedUser({ ...editedUser, email: e.target.value })
+                          }
+                          className="border w-full p-2 rounded"
                         />
                       </td>
-                      <td className="py-3 px-6 text-left">
+                      <td className="py-3 px-6">
                         <input
                           type="number"
-                          value={editedUser.age || ''}
-                          onChange={(e) => setEditedUser({ ...editedUser, age: Number(e.target.value) })}
-                          className="border p-2 w-full"
+                          value={editedUser.age || ""}
+                          onChange={(e) =>
+                            setEditedUser({
+                              ...editedUser,
+                              age: Number(e.target.value),
+                            })
+                          }
+                          className="border w-full p-2 rounded"
                         />
                       </td>
-                      <td className="py-3 px-6 text-left">
+                      <td className="py-3 px-6">
                         <input
                           type="text"
-                          value={editedUser.special_code || ''}
-                          onChange={(e) => setEditedUser({ ...editedUser, special_code: e.target.value })}
-                          className="border p-2 w-full"
+                          value={editedUser.special_code || ""}
+                          onChange={(e) =>
+                            setEditedUser({
+                              ...editedUser,
+                              special_code: e.target.value,
+                            })
+                          }
+                          className="border w-full p-2 rounded"
                         />
                       </td>
-                      <td className="py-3 px-6 text-left">
+                      <td className="py-3 px-6">
                         <button
-                          onClick={() => updateUser({ ...user, ...editedUser } as User)}
-                          className="text-green-500 hover:underline mr-2"
+                          onClick={() =>
+                            updateUser({ ...user, ...editedUser } as User)
+                          }
+                          className="text-green-600 font-medium hover:underline"
                         >
                           Save
                         </button>
-                        <button onClick={handleCancelEdit} className="text-red-500 hover:underline">
+                        <button
+                          onClick={handleCancelEdit}
+                          className="ml-4 text-red-600 font-medium hover:underline"
+                        >
                           Cancel
                         </button>
                       </td>
                     </>
                   ) : (
                     <>
-                      <td className="py-3 px-6 text-left">{user.id}</td>
-                      <td className="py-3 px-6 text-left">{user.name}</td>
-                      <td className="py-3 px-6 text-left">{user.email}</td>
-                      <td className="py-3 px-6 text-left">{user.age}</td>
-                      <td className="py-3 px-6 text-left">{user.special_code || 'N/A'}</td>
-                      <td className="py-3 px-6 text-left">
+                      <td className="py-3 px-6">{user.id}</td>
+                      <td className="py-3 px-6">{user.name}</td>
+                      <td className="py-3 px-6">{user.email}</td>
+                      <td className="py-3 px-6">{user.age}</td>
+                      <td className="py-3 px-6">
+                        {user.special_code || "N/A"}
+                      </td>
+                      <td className="py-3 px-6">
                         <button
                           onClick={() => handleEditClick(user)}
-                          className="text-blue-500 hover:underline mr-2"
+                          className="text-orange-500 hover:underline"
                         >
                           Edit
                         </button>
                         <button
                           onClick={() => deleteUser(user.id)}
-                          className="text-red-500 hover:underline"
+                          className="ml-4 text-red-500 hover:underline"
                         >
                           Delete
                         </button>
@@ -220,19 +246,23 @@ export default function AdminPage() {
           </table>
         </div>
 
-        {/* Add User Form */}
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-4 text-gray-700">Add New User</h3>
+        <hr className='w-100'/>
+
+        {/* Add User Section */}
+        <div>
+          <h3 className="text-lg font-semibold text-gray-700 mb-4 mt-5">
+            Add New User
+          </h3>
           <form
             onSubmit={(e) => {
               e.preventDefault();
               const form = e.target as HTMLFormElement;
               const formData = new FormData(form);
               addUser({
-                name: formData.get('name') as string,
-                email: formData.get('email') as string,
-                age: parseInt(formData.get('age') as string, 10),
-                special_code: formData.get('special_code') as string,
+                name: formData.get("name") as string,
+                email: formData.get("email") as string,
+                age: parseInt(formData.get("age") as string, 10),
+                special_code: formData.get("special_code") as string,
               });
               form.reset();
             }}
@@ -242,29 +272,29 @@ export default function AdminPage() {
               name="name"
               placeholder="Name"
               required
-              className="border p-2 flex-1"
+              className="border p-3 rounded-lg flex-1"
             />
             <input
               name="email"
               placeholder="Email"
               required
-              className="border p-2 flex-1"
+              className="border p-3 rounded-lg flex-1"
             />
             <input
               name="age"
               type="number"
               placeholder="Age"
               required
-              className="border p-2 flex-1"
+              className="border p-3 rounded-lg flex-1"
             />
             <input
               name="special_code"
               placeholder="Special Code"
-              className="border p-2 flex-1"
+              className="border p-3 rounded-lg flex-1"
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-green-700 text-white px-5 py-2 rounded-lg hover:bg-yellow-400"
             >
               Add User
             </button>
