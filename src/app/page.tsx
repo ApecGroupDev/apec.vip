@@ -2,23 +2,24 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 space-y-20">
       {/* Hero Section */}
-      <header className="relative bg-gradient-to-r from-black to-gray-900 text-white text-center py-40 px-8 rounded-lg shadow-xl overflow-hidden">
+      <header className="relative bg-gradient-to-r from-black to-gray-900 text-white text-center py-24 px-8 md:py-40 md:px-12 rounded-lg shadow-xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-800 opacity-90"></div>
-        <h1 className="relative text-5xl md:text-7xl font-extrabold mb-6 leading-tight z-10">
+        <h1 className="relative text-4xl md:text-7xl font-extrabold mb-6 leading-tight z-10">
           Welcome to Our VIP Services
         </h1>
-        <p className="relative text-lg md:text-2xl mb-10 z-10 max-w-3xl mx-auto">
+        <p className="relative text-base md:text-2xl mb-6 md:mb-10 z-10 max-w-3xl mx-auto px-4 sm:px-8">
           Your trusted partner for premium fuel, advanced solutions, and unmatched support. We’re here to exceed your expectations.
         </p>
-        <div className="flex justify-center space-x-4 relative z-10">
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg">
+        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 relative z-10">
+          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg w-full sm:w-auto">
             Explore Our Services
           </button>
-          <button className="bg-white hover:bg-gray-200 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg">
+          <button className="bg-white hover:bg-gray-200 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg w-full sm:w-auto">
             Contact Us
           </button>
         </div>
       </header>
+
 
       {/* About Section */}
       <section className="text-center space-y-6">
