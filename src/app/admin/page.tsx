@@ -17,7 +17,6 @@ export default function AdminPage() {
   const [editingUserId, setEditingUserId] = useState<string | null>(null);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
   const router = useRouter();
-
   // Authentication check: Ensure user is logged in
   useEffect(() => {
     const token = localStorage.getItem('authToken');
@@ -46,16 +45,33 @@ export default function AdminPage() {
     }
   }, []);
 
-  // Add user
+  // Utility function to generate an alphanumeric ID
+  function generateAlphanumericId(length: number = 4): string {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  }
+
+  // Add user with auto-generated alphanumeric ID and special_code
   async function addUser(user: Omit<User, 'id'>) {
     try {
+      const newUser = {
+        ...user,
+        id: generateAlphanumericId(), // Generate unique alphanumeric ID
+        special_code: user.special_code?.trim() ? user.special_code : generateAlphanumericId(4), // Generate special code if blank
+      };
+
       const response = await fetch('/api/admin/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user),
+        body: JSON.stringify(newUser),
       });
-      const newUser = await response.json();
-      setUsers([...users, newUser]);
+
+      const addedUser = await response.json();
+      setUsers([...users, addedUser]);
     } catch (error) {
       console.error('Error adding user:', error);
     }
@@ -246,7 +262,7 @@ export default function AdminPage() {
           </table>
         </div>
 
-        <hr className='w-100'/>
+        <hr className='w-100' />
 
         {/* Add User Section */}
         <div>
@@ -262,7 +278,7 @@ export default function AdminPage() {
                 name: formData.get("name") as string,
                 email: formData.get("email") as string,
                 age: parseInt(formData.get("age") as string, 10),
-                special_code: formData.get("special_code") as string,
+                special_code: null,
               });
               form.reset();
             }}
@@ -285,11 +301,6 @@ export default function AdminPage() {
               type="number"
               placeholder="Age"
               required
-              className="border p-3 rounded-lg flex-1"
-            />
-            <input
-              name="special_code"
-              placeholder="Special Code"
               className="border p-3 rounded-lg flex-1"
             />
             <button
