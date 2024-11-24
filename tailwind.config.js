@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         'custom-red': '#e82228', // Custom color
       },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
     },
   },
   plugins: [],

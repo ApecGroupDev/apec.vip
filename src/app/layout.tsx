@@ -11,6 +11,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="bg-gray-100 text-gray-800">
       <head />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet"
+      />
       <body className="min-h-screen">
         {/* Add the Header here */}
         <Header />
