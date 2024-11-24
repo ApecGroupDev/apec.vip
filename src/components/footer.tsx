@@ -11,7 +11,7 @@ export default function Footer() {
             <img
               src="https://theapecgroup.com/wp-content/uploads/2022/12/APEC-Since1989.png"
               alt="APEC Logo"
-              className="transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[250px] h-auto" // Adjust size here
+              className="transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[200px] h-auto" // Adjust size here
             />
           </Link>
         </div>
