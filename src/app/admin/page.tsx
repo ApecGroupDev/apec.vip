@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ProjectsTable from './ProjectsTable';
 
 interface User {
   id: string;
@@ -311,6 +312,12 @@ export default function AdminPage() {
             </button>
           </form>
         </div>
+        <hr className='mt-5 mb-5'/>
+
+        <div className="mt-5">
+          <ProjectsTable />
+        </div>
+
       </div>
     </div>
   );
