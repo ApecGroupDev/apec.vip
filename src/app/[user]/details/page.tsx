@@ -3,10 +3,12 @@
 import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import CodeVerification from './CodeVerification';
+import Projects from './Projects';
 
 // Define a type for the user data
 interface UserData {
   name: string;
+  id: number;
   email: string;
   age: number;
   special_code: string;
@@ -77,6 +79,8 @@ export default function UserDetails({ params }: UserDetailsProps) {
     <div>
       <main>
         <CodeVerification specialCode={userData.special_code} userData={userData} />
+        {/* Pass userId to Projects component */}
+        <Projects userId={userData.id} />
       </main>
     </div>
   );
