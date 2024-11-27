@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ProjectsTable from './ProjectsTable';
+import AddProject from './AddProject';
 
 interface User {
   id: string;
@@ -121,6 +122,13 @@ export default function AdminPage() {
   const handleCancelEdit = () => {
     setEditingUserId(null);
     setEditedUser({});
+  };
+
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleProjectAdded = () => {
+    // Trigger refresh of ProjectsTable
+    setRefreshKey((prevKey) => prevKey + 1);
   };
 
   // Render loading state while data is being fetched
@@ -312,10 +320,14 @@ export default function AdminPage() {
             </button>
           </form>
         </div>
-        <hr className='mt-5 mb-5'/>
+        <hr className='mt-5 mb-5' />
 
         <div className="mt-5">
-          <ProjectsTable />
+          <ProjectsTable key={refreshKey}/>
+        </div>
+
+        <div className="mt-5">
+          <AddProject onProjectAdded={handleProjectAdded}/>
         </div>
 
       </div>

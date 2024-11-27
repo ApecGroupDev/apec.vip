@@ -25,31 +25,37 @@ export async function GET() {
 // Handle POST request
 export async function POST(req: NextRequest) {
   try {
+    // Parse JSON from the request body
     const { user_id, name, description, start_date, end_date, status } = await req.json();
 
     // Validate required fields
     if (!user_id || !name) {
-      return NextResponse.json({ message: 'user_id and name are required' }, { status: 400 });
+      return NextResponse.json(
+        { message: 'Validation error: user_id and name are required.' },
+        { status: 400 }
+      );
     }
 
+    // Insert into the database
     const [result]: any = await db.execute(
       `
       INSERT INTO projects (user_id, name, description, start_date, end_date, status) 
       VALUES (?, ?, ?, ?, ?, ?)
       `,
       [
-        user_id,
-        name,
-        description || null,
-        start_date || null,
-        end_date || null,
-        status || 'active',
+        user_id,                   // Required
+        name,                      // Required
+        description || null,       // Optional
+        start_date || null,        // Optional
+        end_date || null,          // Optional
+        status || 'active',        // Default to 'active' if not provided
       ]
     );
 
+    // Respond with the created project details
     return NextResponse.json(
       {
-        id: result.insertId,
+        id: result.insertId,       // Return the newly created project's ID
         user_id,
         name,
         description,
@@ -57,11 +63,17 @@ export async function POST(req: NextRequest) {
         end_date,
         status: status || 'active',
       },
-      { status: 201 }
+      { status: 201 } // HTTP Created
     );
   } catch (error) {
-    console.error('API Error:', error);
-    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    // Log error for debugging purposes
+    console.error('Error adding project:', error);
+
+    // Return an error response
+    return NextResponse.json(
+      { message: 'An unexpected error occurred while adding the project.' },
+      { status: 500 } // HTTP Internal Server Error
+    );
   }
 }
 
