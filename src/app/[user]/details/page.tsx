@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
 import CodeVerification from './CodeVerification';
 import Projects from './Projects';
+import Quotes from './Quotes';
 
 // Define a type for the user data
 interface UserData {
@@ -81,6 +82,7 @@ export default function UserDetails({ params }: UserDetailsProps) {
         <CodeVerification specialCode={userData.special_code} userData={userData} />
         {/* Pass userId to Projects component */}
         <Projects userId={userData.id} />
+        <Quotes userId={userData.id} />
       </main>
     </div>
   );
