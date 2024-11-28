@@ -19,12 +19,11 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50 relative">
-      <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-gray-700 via-gray-450 to-gray-200 z-10"></div>
-      <div className="absolute inset-x-0 bottom-1 h-1 bg-[#e82228] z-20"></div>
+      <div className="absolute inset-x-0 bottom-0 h-2.5 bg-gradient-to-r from-[#e82228] via-red-800 to-black z-20"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 mb-3">
             <Link href="/" className="text-3xl font-extrabold tracking-wide">
               <span className="text-[#e82228]">APEC </span>
               <span className="text-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 px-2 py-1 rounded-md hover:shadow-[0_0_10px_rgba(255,223,0,0.7),0_0_20px_rgba(255,223,0,0.5)] hover:scale-110 transition duration-300">
