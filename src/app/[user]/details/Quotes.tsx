@@ -18,26 +18,19 @@ export default function Quotes({ userId }: QuotesProps) {
 
   const fetchQuotes = async () => {
     try {
-      // Ensure userId is valid
-      if (!userId) {
-        throw new Error('User ID is missing');
-      }
+      if (!userId) throw new Error('User ID is missing');
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/quotes?userId=${userId}`,
+        { cache: 'no-store' }
+      );
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/quotes?userId=${userId}`, {
-        cache: 'no-store', // Disable caching to always fetch fresh data
-      });
-
-      if (!response.ok) {
-        // Log the status for better debugging
-        console.error('Failed to fetch quotes', response.statusText);
-        throw new Error(`Failed to fetch quotes: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`Failed to fetch quotes: ${response.status}`);
 
       const data = await response.json();
       setQuotes(data);
     } catch (error) {
       console.error('Error fetching quotes:', error);
-      setQuotes([]); // Set empty array if there's an error
+      setQuotes([]);
     } finally {
       setLoading(false);
     }
@@ -48,24 +41,33 @@ export default function Quotes({ userId }: QuotesProps) {
   }, [userId]);
 
   if (loading) {
-    return <div>Loading quotes...</div>;
+    return <div className="text-center py-8 text-gray-600">Loading quotes...</div>;
   }
 
   if (quotes.length === 0) {
-    return <div>No quotes found</div>;
+    return <div className="text-center py-8 text-gray-600">No quotes found</div>;
   }
 
   return (
-    <div>
-      <h3>Quotes</h3>
-      <ul>
+    <div className="container mx-auto px-4 py-8">
+      <h3 className="text-2xl font-bold text-red-600 mb-6">Quotes</h3>
+      <div className="space-y-6">
         {quotes.map((quote) => (
-          <li key={quote.id}>
-            <h4>{quote.name}</h4>
-            <p>{quote.description}</p>
-          </li>
+          <div
+            key={quote.id}
+            className="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105"
+          >
+            <h4 className="text-xl font-semibold text-red-500 truncate">{quote.name}</h4>
+            <p className="text-sm text-gray-600 line-clamp-3">{quote.description}</p>
+            <a
+              href={`/quotes/${quote.id}`}
+              className="block mt-4 text-sm font-semibold text-orange-500 hover:underline"
+            >
+              View Details
+            </a>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
