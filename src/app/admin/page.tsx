@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import ProjectsTable from './ProjectsTable';
 import AddProject from './AddProject';
+import QuotesTable from './QuotesTable';
 
 interface User {
   id: string;
@@ -328,6 +329,10 @@ export default function AdminPage() {
 
         <div className="mt-5">
           <AddProject onProjectAdded={handleProjectAdded}/>
+        </div>
+
+        <div className="mt-5">
+          <QuotesTable key={refreshKey}/>
         </div>
 
       </div>
