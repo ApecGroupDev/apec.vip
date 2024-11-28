@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import ProjectsTable from './ProjectsTable';
 import AddProject from './AddProject';
 import QuotesTable from './QuotesTable';
+import AddQuote from './AddQuote';
 
 interface User {
   id: string;
@@ -128,6 +129,11 @@ export default function AdminPage() {
   const [refreshKey, setRefreshKey] = useState(0);
 
   const handleProjectAdded = () => {
+    // Trigger refresh of ProjectsTable
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
+
+  const handleQuoteAdded = () => {
     // Trigger refresh of ProjectsTable
     setRefreshKey((prevKey) => prevKey + 1);
   };
@@ -333,6 +339,10 @@ export default function AdminPage() {
 
         <div className="mt-5">
           <QuotesTable key={refreshKey}/>
+        </div>
+
+        <div className="mt-5">
+          <AddQuote onQuoteAdded={handleQuoteAdded}/>
         </div>
 
       </div>
