@@ -108,7 +108,7 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-500 to-red-500 text-white px-8 py-16">
+    <div className="flex flex-col items-center justify-center text-white px-8 py-16">
       {!isVerified ? (
         <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <h2 className="text-4xl font-extrabold text-blue-700 mb-6">VIP Access Verification</h2>
