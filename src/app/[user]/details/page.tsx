@@ -141,16 +141,16 @@ export default function Page({ params }: PageProps) {
             Your access has been successfully verified. Below are your details:
           </p>
           <div className="bg-gray-100 rounded-xl p-8 text-left space-y-6 border border-gray-300">
-            <p className="text-gray-800 text-md">
+            <p className="text-gray-800 text-md text-wrap">
               <strong className="text-red-500">Username:</strong> {userData.name}
             </p>
-            <p className="text-gray-800 text-md">
+            <p className="text-gray-800 text-md text-wrap">
               <strong className="text-red-500">Email:</strong> {userData.email}
             </p>
-            <p className="text-gray-800 text-md">
+            <p className="text-gray-800 text-md text-wrap">
               <strong className="text-red-500">Age:</strong> {userData.age}
             </p>
-            <p className="text-gray-800 text-md">
+            <p className="text-gray-800 text-md text-wrap">
               <strong className="text-red-500">Special Code:</strong> {userData.special_code}
             </p>
           </div>

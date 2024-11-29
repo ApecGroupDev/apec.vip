@@ -9,4 +9,14 @@
 /* Import Tailwind's utility classes */
 @tailwind utilities;
 
-
+/* Add this to the relevant element */
+.text-wrap {
+  word-wrap: break-word;
+  /* Ensures long words wrap onto the next line */
+  word-break: break-word;
+  /* Breaks long words */
+  overflow-wrap: break-word;
+  /* Standard property to wrap text */
+  white-space: normal;
+  /* Ensures text wraps rather than staying on one line */
+}
