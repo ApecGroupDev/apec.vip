@@ -77,25 +77,48 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// Helper function to format date to MySQL compatible format
+const formatDateToMySQL = (date: string) => {
+  const dateObj = new Date(date);
+  const formattedDate = dateObj.toISOString().slice(0, 19).replace('T', ' '); // Convert to 'YYYY-MM-DD HH:MM:SS'
+  return formattedDate;
+};
+
 // Handle PUT request (update quote)
 export async function PUT(req: NextRequest) {
   try {
+    // Parse the request body
     const { id, user_id, name, description, start_date, end_date, status } = await req.json();
 
+    // Validate that the ID is provided
     if (!id) {
       return NextResponse.json({ message: 'Quote ID is required' }, { status: 400 });
     }
 
+    // Format the dates to MySQL compatible format
+    const formattedStartDate = start_date ? formatDateToMySQL(start_date) : null;
+    const formattedEndDate = end_date ? formatDateToMySQL(end_date) : null;
+
+    // Execute the update query
     await db.execute(
       `
-      UPDATE quotes
+      UPDATE quotes 
       SET user_id = ?, name = ?, description = ?, start_date = ?, end_date = ?, status = ? 
       WHERE id = ?
       `,
-      [user_id, name, description, start_date, end_date, status, id]
+      [
+        user_id,
+        name,
+        description,
+        formattedStartDate,
+        formattedEndDate,
+        status,
+        id
+      ]
     );
 
-    return NextResponse.json({ message: 'Quote Record updated successfully' });
+    // Return a success response
+    return NextResponse.json({ message: 'Quote updated successfully' });
   } catch (error) {
     console.error('API Error:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
