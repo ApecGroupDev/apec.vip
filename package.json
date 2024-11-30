@@ -12,6 +12,7 @@
     "deploy": "npm run predeploy && gh-pages -d out"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "autoprefixer": "^10.4.20",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
