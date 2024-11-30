@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import QuoteModal from './QuoteModal';
 
 interface Quote {
   id: number;
@@ -15,6 +16,8 @@ interface QuotesProps {
 export default function Quotes({ userId }: QuotesProps) {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedQuote, setSelectedQuote] = useState<Quote | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const fetchQuotes = async () => {
     try {
@@ -40,6 +43,16 @@ export default function Quotes({ userId }: QuotesProps) {
     fetchQuotes();
   }, [userId]);
 
+  const openModal = (quote: Quote) => {
+    setSelectedQuote(quote);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedQuote(null);
+    setIsModalOpen(false);
+  };
+
   if (loading) {
     return <div className="text-center py-8 text-gray-600">Loading quotes...</div>;
   }
@@ -59,15 +72,18 @@ export default function Quotes({ userId }: QuotesProps) {
           >
             <h4 className="text-xl font-semibold text-red-500 truncate">{quote.name}</h4>
             <p className="text-sm text-gray-600 line-clamp-3">{quote.description}</p>
-            <a
-              href={`/quotes/${quote.id}`}
+            <button
+              onClick={() => openModal(quote)}
               className="block mt-4 text-sm font-semibold text-orange-500 hover:underline"
             >
               View Details
-            </a>
+            </button>
           </div>
         ))}
       </div>
+
+      {/* Modal */}
+      <QuoteModal isOpen={isModalOpen} onClose={closeModal} quote={selectedQuote} />
     </div>
   );
 }
