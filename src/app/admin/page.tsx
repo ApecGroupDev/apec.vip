@@ -20,13 +20,39 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [editingUserId, setEditingUserId] = useState<string | null>(null);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
-  const router = useRouter();
+  const router = useRouter(); 
+
   // Authentication check: Ensure user is logged in
   useEffect(() => {
-    const token = localStorage.getItem('authToken');
-    if (!token) {
+    const authToken = localStorage.getItem('authToken');
+
+    // If no token exists or token validation fails, redirect to login page
+    if (!authToken) {
       router.push('/admin-login');
+      return;
     }
+
+    // Validate the token with the API (for instance, check if the token is expired)
+    const validateToken = async () => {
+      try {
+        const response = await fetch('/api/auth/validate-token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`, // Pass token in Authorization header
+          },
+        });
+
+        if (!response.ok) {
+          router.push('/admin-login'); // Redirect to login if token is invalid
+        }
+      } catch (error) {
+        console.error('Token validation error:', error);
+        router.push('/admin-login'); // Redirect if there's an error during validation
+      }
+    };
+
+    validateToken(); // Call validation on initial load
   }, [router]);
 
   // Fetch users data
@@ -330,19 +356,19 @@ export default function AdminPage() {
         <hr className='mt-5 mb-5' />
 
         <div className="mt-5">
-          <ProjectsTable key={refreshKey}/>
+          <ProjectsTable key={refreshKey} />
         </div>
 
         <div className="mt-5">
-          <AddProject onProjectAdded={handleProjectAdded}/>
+          <AddProject onProjectAdded={handleProjectAdded} />
         </div>
 
         <div className="mt-5">
-          <QuotesTable key={refreshKey}/>
+          <QuotesTable key={refreshKey} />
         </div>
 
         <div className="mt-5">
-          <AddQuote onQuoteAdded={handleQuoteAdded}/>
+          <AddQuote onQuoteAdded={handleQuoteAdded} />
         </div>
 
       </div>
