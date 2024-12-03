@@ -120,7 +120,6 @@ export default function ProjectsTable() {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4 text-gray-700">Projects</h2>
       <div className="overflow-x-auto border rounded-lg">
         <table className="min-w-full bg-white border-collapse">
           <thead>

@@ -192,19 +192,19 @@ export default function AdminPage() {
         <div className="flex border-b mb-6">
           <button
             onClick={() => setActiveTab('user')}
-            className={`px-6 py-2 font-semibold ${activeTab === 'user' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500'}`}
+            className={`px-6 py-2 font-semibold ${activeTab === 'user' ? 'border-b-2 border-red-600 text-red-600' : 'text-gray-500'}`}
           >
             Users
           </button>
           <button
             onClick={() => setActiveTab('project')}
-            className={`px-6 py-2 font-semibold ${activeTab === 'project' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500'}`}
+            className={`px-6 py-2 font-semibold ${activeTab === 'project' ? 'border-b-2 border-red-600 text-red-600' : 'text-gray-500'}`}
           >
             Projects
           </button>
           <button
             onClick={() => setActiveTab('quote')}
-            className={`px-6 py-2 font-semibold ${activeTab === 'quote' ? 'border-b-2 border-blue-500 text-blue-600' : 'text-gray-500'}`}
+            className={`px-6 py-2 font-semibold ${activeTab === 'quote' ? 'border-b-2 border-red-600 text-red-600' : 'text-gray-500'}`}
           >
             Quotes
           </button>
