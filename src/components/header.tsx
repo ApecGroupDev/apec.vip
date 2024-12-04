@@ -28,7 +28,7 @@ export default function Header() {
             {/* Placeholder for Logo */}
             <Link href="/">
               <Image
-                src="/images/Logo2.png" // Replace with your actual logo filename
+                src="/images/Artboard2-8.png" // Replace with your actual logo filename
                 alt="Logo"
                 width={125} // Adjust width as needed
                 height={0} // Adjust height as needed
@@ -93,9 +93,10 @@ export default function Header() {
       {/* Mobile Navigation */}
       <div
         id="mobile-menu"
-        className={`lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-300 ease-in-out bg-[url('/images/Logo1.png')] bg-cover bg-no-repeat sm:bg-none`}
+        className={`lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          } transition-transform duration-300 ease-in-out bg-[url('/images/Logo1.png')] bg-cover bg-no-repeat bg-center`}
       >
+
         <div className="bg-white h-full p-6">
           <button
             onClick={toggleMenu}
