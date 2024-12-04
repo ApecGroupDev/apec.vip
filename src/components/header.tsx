@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,21 +19,33 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50 relative">
+    <header className="bg-black shadow-md sticky top-0 z-50 relative">
       <div className="absolute inset-x-0 bottom-0 h-2.5 bg-gradient-to-r from-[#e82228] via-red-800 to-black z-20"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 mb-3">
+            {/* Placeholder for Logo */}
+            <Link href="/">
+              <Image
+                src="/images/Logo2.png" // Replace with your actual logo filename
+                alt="Logo"
+                width={150} // Adjust width as needed
+                height={20} // Adjust height as needed
+                className="object-contain"
+              />
+            </Link>
+
+            {/* Commented out APEC VIP logo */}
+            {/*
             <Link href="/" className="text-3xl font-extrabold tracking-wide">
               <span className="text-[#e82228]">APEC </span>
               <span className="text-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 px-2 py-1 rounded-md hover:shadow-[0_0_10px_rgba(255,223,0,0.7),0_0_20px_rgba(255,223,0,0.5)] hover:scale-110 transition duration-300">
                 VIP
               </span>
-
             </Link>
+            */}
           </div>
-
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
@@ -41,8 +54,8 @@ export default function Header() {
                 key={href}
                 href={href}
                 className={`text-lg font-medium transition ${pathname === href
-                  ? 'text-[#e82228]'
-                  : 'text-gray-800 hover:text-[#e82228]'
+                    ? 'text-[#e82228]'
+                    : 'text-white hover:text-[#e82228]'
                   }`}
               >
                 {label}
@@ -59,7 +72,8 @@ export default function Header() {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className={`h-8 w-8 transition-transform ${isMenuOpen ? 'rotate-90' : ''}`}
+              className={`h-8 w-8 transition-transform ${isMenuOpen ? 'rotate-90' : ''
+                }`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -109,8 +123,8 @@ export default function Header() {
                 key={href}
                 href={href}
                 className={`block text-lg font-medium ${pathname === href
-                  ? 'text-[#e82228]'
-                  : 'text-gray-700 hover:text-[#e82228]'
+                    ? 'text-[#e82228]'
+                    : 'text-gray-700 hover:text-[#e82228]'
                   }`}
                 onClick={toggleMenu}
               >
