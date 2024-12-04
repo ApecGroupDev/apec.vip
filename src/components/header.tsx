@@ -19,7 +19,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-black shadow-md sticky p-5 top-0 z-50 relative">
+    <header style={{ backgroundColor: '#212121' }} className="shadow-md sticky p-5 top-0 z-50 relative">
       <div className="absolute inset-x-0 bottom-0 h-2.5 bg-gradient-to-r from-[#e82228] via-red-800 to-black z-20"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
@@ -30,9 +30,10 @@ export default function Header() {
               <Image
                 src="/images/Logo2.png" // Replace with your actual logo filename
                 alt="Logo"
-                width={130} // Adjust width as needed
-                height={40} // Adjust height as needed
+                width={125} // Adjust width as needed
+                height={0} // Adjust height as needed
                 className="object-contain"
+                layout='intrinsic'
               />
             </Link>
 
@@ -93,7 +94,7 @@ export default function Header() {
       <div
         id="mobile-menu"
         className={`lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-300 ease-in-out`}
+          } transition-transform duration-300 ease-in-out bg-[url('/images/Logo1.png')] bg-cover bg-no-repeat sm:bg-none`}
       >
         <div className="bg-white h-full p-6">
           <button
