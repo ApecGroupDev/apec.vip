@@ -19,7 +19,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-black shadow-md sticky top-0 z-50 relative">
+    <header className="bg-black shadow-md sticky p-5 top-0 z-50 relative">
       <div className="absolute inset-x-0 bottom-0 h-2.5 bg-gradient-to-r from-[#e82228] via-red-800 to-black z-20"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
@@ -30,8 +30,8 @@ export default function Header() {
               <Image
                 src="/images/Logo2.png" // Replace with your actual logo filename
                 alt="Logo"
-                width={150} // Adjust width as needed
-                height={20} // Adjust height as needed
+                width={130} // Adjust width as needed
+                height={40} // Adjust height as needed
                 className="object-contain"
               />
             </Link>
@@ -54,8 +54,8 @@ export default function Header() {
                 key={href}
                 href={href}
                 className={`text-lg font-medium transition ${pathname === href
-                    ? 'text-[#e82228]'
-                    : 'text-white hover:text-[#e82228]'
+                  ? 'text-[#e82228]'
+                  : 'text-white hover:text-[#e82228]'
                   }`}
               >
                 {label}
@@ -123,8 +123,8 @@ export default function Header() {
                 key={href}
                 href={href}
                 className={`block text-lg font-medium ${pathname === href
-                    ? 'text-[#e82228]'
-                    : 'text-gray-700 hover:text-[#e82228]'
+                  ? 'text-[#e82228]'
+                  : 'text-gray-700 hover:text-[#e82228]'
                   }`}
                 onClick={toggleMenu}
               >
