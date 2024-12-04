@@ -19,7 +19,7 @@ export default function Header() {
   ];
 
   return (
-    <header style={{ backgroundColor: '#212121' }} className="shadow-md sticky p-5 top-0 z-50 relative">
+    <header style={{ backgroundColor: 'black' }} className="shadow-md sticky p-5 top-0 z-50 relative">
       <div className="absolute inset-x-0 bottom-0 h-2.5 bg-gradient-to-r from-[#e82228] via-red-800 to-black z-20"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex justify-between items-center h-20">
