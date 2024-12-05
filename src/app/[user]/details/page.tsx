@@ -112,7 +112,10 @@ export default function Page({ params }: PageProps) {
       {!isVerified ? (
         <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <h2 className="text-4xl font-extrabold text-black mb-6">
-            VIP ACCESS
+            <span className="bg-gradient-to-r from-yellow-600 via-yellow-700 to-yellow-500 bg-clip-text text-transparent text-5xl animate-pulse">
+              VIP
+            </span>
+            <span> ACCESS</span>
           </h2>
           <p className="text-gray-600 text-lg mb-6">
             Enter the special code to unlock your personalized details.
@@ -126,9 +129,9 @@ export default function Page({ params }: PageProps) {
           />
           <button
             onClick={handleVerify}
-            className="w-full bg-red-600 text-white font-semibold py-4 rounded-xl shadow-xl hover:bg-green-500 focus:outline-none transition-all duration-200 transform hover:scale-105"
+            className="w-full bg-red-600 text-white font-semibold py-4 rounded-xl shadow-xl hover:bg-red-700 focus:outline-none transition-all duration-200 transform hover:scale-105"
           >
-            Verify Code
+            Proceed
           </button>
           {verificationError && <p className="text-red-600 font-semibold mt-4">{verificationError}</p>}
         </div>
