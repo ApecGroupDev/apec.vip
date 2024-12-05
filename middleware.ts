@@ -9,10 +9,13 @@ const allowedOrigins = [
 ];
 
 export async function middleware(req: NextRequest) {
+  console.log('Middleware running for:', req.nextUrl.pathname); // Add this line
+
   const origin = req.headers.get('origin');
 
   // Check if the origin is allowed
   if (origin && !allowedOrigins.includes(origin)) {
+    console.log(`Blocked origin: ${origin}`); // Debug blocked origins
     return new NextResponse(null, {
       status: 403, // Forbidden
       statusText: 'CORS policy: Origin not allowed',
