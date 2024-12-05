@@ -31,10 +31,29 @@ export async function GET(request: Request) {
       return NextResponse.json({ message: 'User not found' }, { status: 404 });
     }
 
-    // Return the user data
-    return NextResponse.json(rows[0], { status: 200 });
+    // Create the response with CORS headers
+    const response = NextResponse.json(rows[0], { status: 200 });
+
+    // Set CORS headers for the response
+    response.headers.set('Access-Control-Allow-Origin', '*'); // Allow all origins (or specify your domain)
+    response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Allow specific methods
+    response.headers.set('Access-Control-Allow-Headers', 'Content-Type'); // Allow Content-Type header
+
+    return response;
   } catch (error) {
     console.error(error); // Log any errors for debugging
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
+}
+
+// Optional: Handle preflight requests (OPTIONS)
+export async function OPTIONS() {
+  const response = NextResponse.json(null, { status: 204 });
+
+  // Set CORS headers for preflight requests
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
+  return response;
 }

@@ -9,7 +9,7 @@ const allowedOrigins = [
 ];
 
 export async function middleware(req: NextRequest) {
-  console.log('Middleware running for:', req.nextUrl.pathname); // Log the requested path
+  console.log('Middleware running for:', req.nextUrl.pathname); // Add this line
 
   const origin = req.headers.get('origin');
 
@@ -28,7 +28,7 @@ export async function middleware(req: NextRequest) {
   res.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.headers.set('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Handle preflight requests (OPTIONS)
+  // Handle preflight requests
   if (req.method === 'OPTIONS') {
     return new NextResponse(null, {
       headers: res.headers,
@@ -38,18 +38,3 @@ export async function middleware(req: NextRequest) {
 
   return res;
 }
-
-// Apply middleware to API routes only
-export const config = {
-  matcher: [
-    '/api/admin/login',
-    '/api/admin/projects',
-    '/api/admin/quotes',
-    '/api/admin/users',  
-    '/api/auth/validate-token',
-    '/api/users/projects',
-    '/api/users/quotes',
-    '/api/verify-master-key',
-    '/api/verify-special-code',
-  ],
-};
