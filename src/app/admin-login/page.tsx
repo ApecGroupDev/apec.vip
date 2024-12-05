@@ -44,9 +44,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-black via-gray-900 to-gray-800 text-white">
+    <div className="flex items-center justify-center px-8 py-16 text-white">
       <div className="bg-white p-12 rounded-xl shadow-xl max-w-md w-full space-y-8">
-        <h1 className="text-3xl font-extrabold text-center text-blue-600">Admin Login</h1>
+        <h1 className="text-3xl font-extrabold text-center text-black">
+          <span className="text-red-600">Admin </span>
+          Login
+        </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700">Access Code</label>
@@ -55,12 +58,12 @@ export default function LoginPage() {
               placeholder="Enter access code"
               value={masterCode}
               onChange={(e) => setMasterCode(e.target.value)}
-              className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-gray-900" // Ensure text is visible
+              className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent text-gray-900" // Ensure text is visible
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 focus:outline-none transition duration-200 transform hover:scale-105"
+            className="w-full bg-red-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-red-700 focus:outline-none transition duration-200 transform hover:scale-105"
           >
             Login
           </button>
