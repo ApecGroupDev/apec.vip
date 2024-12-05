@@ -42,10 +42,14 @@ export async function middleware(req: NextRequest) {
 // Apply middleware to API routes only
 export const config = {
   matcher: [
-    '/api/admin/*',  
-    '/api/auth/*',
-    '/api/users/*',
-    '/api/verify-master-key/*',
-    '/api/verify-special-code/*',
+    '/api/admin/login',
+    '/api/admin/projects',
+    '/api/admin/quotes',
+    '/api/admin/users',  
+    '/api/auth/validate-token',
+    '/api/users/projects',
+    '/api/users/quotes',
+    '/api/verify-master-key',
+    '/api/verify-special-code',
   ],
 };
