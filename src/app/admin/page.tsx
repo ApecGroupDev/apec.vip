@@ -175,7 +175,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 py-8 px-4">
+    <div className="py-8 px-4">
       <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         {/* Header Section */}
         <div className="flex justify-between items-center mb-8">
@@ -363,7 +363,6 @@ export default function AdminPage() {
                 </button>
               </form>
             </div>
-            <hr className='mt-5 mb-5' />
           </>
         )}
 
