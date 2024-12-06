@@ -47,7 +47,7 @@ export default async function UserPage({ params }: UserPageProps) {
     .join(' ');
 
   return (
-    <div className="flex flex-col bg-gradient-to-b from-white to-gray-100">
+    <div className="flex flex-col">
       <main className="flex-grow flex items-center justify-center px-6 py-20">
         <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center transform transition duration-300 hover:shadow-2xl">
           {/* Welcome Section */}
