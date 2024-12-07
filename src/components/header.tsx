@@ -30,10 +30,10 @@ export default function Header() {
               <Image
                 src="/images/Artboard2-8.png" // Replace with your actual logo filename
                 alt="Logo"
-                width={125} // Adjust width as needed
-                height={0} // Adjust height as needed
+                width={125} // Set desired width
+                height={50} // Adjust height as needed to maintain aspect ratio
                 className="object-contain"
-                layout='intrinsic'
+                style={{ height: "auto", width: "auto" }} // Ensures aspect ratio is maintained
               />
             </Link>
 
@@ -94,7 +94,7 @@ export default function Header() {
       <div
         id="mobile-menu"
         className={`lg:hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-300 ease-in-out bg-[url('/images/Logo1.png')] bg-cover bg-no-repeat bg-center`}
+          } transition-transform duration-300 ease-in-out`}
       >
 
         <div className="bg-white h-full p-6">
