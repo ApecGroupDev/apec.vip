@@ -4,7 +4,7 @@ import db from '@/lib/db';
 // Handle GET request
 export async function GET() {
   try {
-    const [rows] = await db.execute('SELECT id, name, email, age, special_code FROM users');
+    const [rows] = await db.execute('SELECT id, name, email, special_code FROM users');
     return NextResponse.json(rows);
   } catch (error) {
     console.error('API Error:', error);
@@ -15,12 +15,12 @@ export async function GET() {
 // Handle POST request
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, age, special_code } = await req.json(); // Use req.json() to parse the body
+    const { name, email, special_code } = await req.json(); // Use req.json() to parse the body
     const [result]: any = await db.execute(
-      'INSERT INTO users (name, email, age, special_code) VALUES (?, ?, ?, ?)',
-      [name, email, age, special_code || null]
+      'INSERT INTO users (name, email, special_code) VALUES (?, ?, ?, ?)',
+      [name, email, special_code || null]
     );
-    return NextResponse.json({ id: result.insertId, name, email, age, special_code }, { status: 201 });
+    return NextResponse.json({ id: result.insertId, name, email, special_code }, { status: 201 });
   } catch (error) {
     console.error('API Error:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
@@ -30,10 +30,10 @@ export async function POST(req: NextRequest) {
 // Handle PUT request (optional, if you need to update user)
 export async function PUT(req: NextRequest) {
   try {
-    const { id, name, email, age, special_code } = await req.json(); // Use req.json() to parse the body
+    const { id, name, email, special_code } = await req.json(); // Use req.json() to parse the body
     await db.execute(
-      'UPDATE users SET name = ?, email = ?, age = ?, special_code = ? WHERE id = ?',
-      [name, email, age, special_code, id]
+      'UPDATE users SET name = ?, email = ?, special_code = ? WHERE id = ?',
+      [name, email, special_code, id]
     );
     return NextResponse.json({ message: 'User updated successfully' });
   } catch (error) {
