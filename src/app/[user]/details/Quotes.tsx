@@ -62,7 +62,7 @@ export default function Quotes({ userId }: QuotesProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto my-5 px-4 py-8">
       <h3 className="text-2xl font-bold text-red-600 mb-6">Quotes</h3>
       <div className="space-y-6">
         {quotes.map((quote) => (
