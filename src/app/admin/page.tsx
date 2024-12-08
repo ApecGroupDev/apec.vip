@@ -17,6 +17,7 @@ interface User {
 export default function AdminPage() {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
   const [editingUserId, setEditingUserId] = useState<string | null>(null);
   const [editedUser, setEditedUser] = useState<Partial<User>>({});
   const [activeTab, setActiveTab] = useState<'user' | 'project' | 'quote'>('user');
@@ -147,6 +148,13 @@ export default function AdminPage() {
     setEditedUser(user);
   };
 
+  // Filter projects based on search term
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      user.email.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const handleCancelEdit = () => {
     setEditingUserId(null);
     setEditedUser({});
@@ -163,6 +171,7 @@ export default function AdminPage() {
     // Trigger refresh of ProjectsTable
     setRefreshKey((prevKey) => prevKey + 1);
   };
+
 
   // Render loading state while data is being fetched
   if (loading) {
@@ -213,6 +222,16 @@ export default function AdminPage() {
         {activeTab === 'user' && (
           <>
             <h2 className="text-xl font-semibold mb-4 text-gray-700">User List</h2>
+            {/* Search Input */}
+            <div className="mb-4">
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full p-2 border rounded"
+              />
+            </div>
             <div className="overflow-x-auto border rounded-lg">
               <table className="min-w-full bg-white border-collapse">
                 <thead>
@@ -225,7 +244,7 @@ export default function AdminPage() {
                   </tr>
                 </thead>
                 <tbody className="text-gray-700 text-sm">
-                  {users.map((user) => (
+                  {filteredUsers.map((user) => (
                     <tr key={user.id} className="border-t hover:bg-gray-50 transition">
                       {editingUserId === user.id ? (
                         <>
