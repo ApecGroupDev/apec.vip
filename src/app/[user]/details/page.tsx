@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { notFound } from 'next/navigation';
 import Projects from './Projects';
 import Quotes from './Quotes';
@@ -24,6 +24,25 @@ export default function Page({ params }: PageProps) {
   const [loading, setLoading] = useState(true);
   const [verificationError, setVerificationError] = useState('');
   const [user, setUser] = useState<string | null>(null);
+
+  // Refs for sections
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const quotesRef = useRef<HTMLDivElement>(null);
+  const detailsRef = useRef<HTMLDivElement>(null);
+
+  // Scroll handler
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      const offset = 150; // Adjust this value for spacing from the top
+      const elementPosition = ref.current.offsetTop;
+      const scrollToPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: scrollToPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   // Fetch user data from the API
   const getUserData = async (userName: string) => {
@@ -108,7 +127,7 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center text-white px-8">
+    <div className="flex flex-col items-center justify-center text-white px-8 py-16">
       {!isVerified ? (
         <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <h2 className="text-4xl font-extrabold text-black mb-6">
@@ -135,7 +154,7 @@ export default function Page({ params }: PageProps) {
           {verificationError && <p className="text-red-600 font-semibold mt-4">{verificationError}</p>}
         </div>
       ) : (
-        <div className="container mx-auto my-5 px-4 py-8">
+        <div className="container mx-auto mb-5 px-4 pb-8">
           <h1 className="text-5xl font-extrabold mb-6 text-black">
             Welcome, <span className="text-red-600">{userData.name}</span>
           </h1>
@@ -151,7 +170,7 @@ export default function Page({ params }: PageProps) {
             </div>
 
             {/* Call to Action */}
-            <div className="bg-yellow-50 shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
+            <div className="bg-gray-300 shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
               <h2 className="text-2xl font-bold text-black mb-4">
                 Explore Your VIP World
               </h2>
@@ -159,13 +178,19 @@ export default function Page({ params }: PageProps) {
                 Discover a curated selection of experiences and offers tailored just for you.
               </p>
               <div className="flex flex-col space-y-4">
-                <button className="w-full sm:w-full lg:w-1/4 bg-red-600 text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-red-700 transition-all duration-200 transform hover:scale-105">
+                <button
+                  onClick={() => scrollToSection(projectsRef)}
+                  className="w-full sm:w-full lg:w-1/4 bg-black text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-yellow-500 transition-all duration-200 transform hover:scale-105">
                   Projects
                 </button>
-                <button className="w-full sm:w-full lg:w-1/4 bg-red-600 text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-red-700 transition-all duration-200 transform hover:scale-105">
+                <button
+                  onClick={() => scrollToSection(quotesRef)}
+                  className="w-full sm:w-full lg:w-1/4 bg-black text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-yellow-500 transition-all duration-200 transform hover:scale-105">
                   Quotes
                 </button>
-                <button className="w-full sm:w-full lg:w-1/4 bg-red-600 text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-red-700 transition-all duration-200 transform hover:scale-105">
+                <button
+                  onClick={() => scrollToSection(detailsRef)}
+                  className="w-full sm:w-full lg:w-1/4 bg-black text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-yellow-500 transition-all duration-200 transform hover:scale-105">
                   Details
                 </button>
               </div>
@@ -177,26 +202,30 @@ export default function Page({ params }: PageProps) {
       {isVerified && (
         <div>
           {/* Projects Section */}
-          <Projects userId={userData.id} />
+          <div ref={projectsRef}>
+            <Projects userId={userData.id} />
+          </div>
 
           {/* Quotes Section */}
-          <Quotes userId={userData.id} />
+          <div ref={quotesRef}>
+            <Quotes userId={userData.id} />
+          </div>
 
           {/* Details Section */}
-          <div className="container mx-auto my-5 px-4 py-8">
+          <div ref={detailsRef} className="container mx-auto my-5 px-4 py-8">
             <h3 className="text-2xl font-bold text-black mb-6">Here are your details,  <span className='text-red-600'>{userData.name}</span></h3>
             <div className="space-y-6">
               <div className="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
-                <p className="text-gray-800 text-md text-wrap">
+                <p className="text-gray-800 text-md my-5 text-wrap">
                   <strong className="text-red-500">Username:</strong> {userData.name}
                 </p>
-                <p className="text-gray-800 text-md text-wrap">
+                <p className="text-gray-800 text-md my-5 text-wrap">
                   <strong className="text-red-500">Email:</strong> {userData.email}
                 </p>
-                <p className="text-gray-800 text-md text-wrap">
+                <p className="text-gray-800 text-md my-5 text-wrap">
                   <strong className="text-red-500">Age:</strong> {userData.age}
                 </p>
-                <p className="text-gray-800 text-md text-wrap">
+                <p className="text-gray-800 text-md my-5 text-wrap">
                   <strong className="text-red-500">Special Code:</strong> {userData.special_code}
                 </p>
               </div>
