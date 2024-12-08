@@ -20,6 +20,7 @@ export default function ProjectsTable() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
   const [editingProjectId, setEditingProjectId] = useState<string | null>(null);
   const [editedProject, setEditedProject] = useState<Project>({
     id: '',
@@ -61,6 +62,15 @@ export default function ProjectsTable() {
     const user = users.find((user) => user.id === userId);
     return user ? user.name : 'Unknown User';
   };
+
+  // Filter projects based on search term
+  const filteredProjects = projects.filter(
+    (project) =>
+      project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      project.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      getUserNameById(project.user_id).toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Handle the edit button click
   const handleEditClick = (project: Project) => {
@@ -120,6 +130,17 @@ export default function ProjectsTable() {
 
   return (
     <div>
+      {/* Search Input */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search projects..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
+      </div>
+
       <div className="overflow-x-auto border rounded-lg">
         <table className="min-w-full bg-white border-collapse">
           <thead>
@@ -132,7 +153,7 @@ export default function ProjectsTable() {
             </tr>
           </thead>
           <tbody className="text-gray-700 text-sm">
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <tr key={project.id} className="border-t hover:bg-gray-50 transition">
                 {editingProjectId === project.id ? (
                   <>
