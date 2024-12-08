@@ -11,7 +11,6 @@ interface User {
   id: string;
   name: string;
   email: string;
-  age: number;
   special_code: string | null;
 }
 
@@ -317,7 +316,6 @@ export default function AdminPage() {
                   addUser({
                     name: formData.get("name") as string,
                     email: formData.get("email") as string,
-                    age: parseInt(formData.get("age") as string, 10),
                     special_code: null,
                   });
                   form.reset();
@@ -333,13 +331,6 @@ export default function AdminPage() {
                 <input
                   name="email"
                   placeholder="Email"
-                  required
-                  className="border p-3 rounded-lg flex-1"
-                />
-                <input
-                  name="age"
-                  type="number"
-                  placeholder="Age"
                   required
                   className="border p-3 rounded-lg flex-1"
                 />
