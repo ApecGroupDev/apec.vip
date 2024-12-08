@@ -20,6 +20,7 @@ export default function QuotesTable() {
   const [quotes, setQuotes] = useState<Quote[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
   const [editingQuoteId, setEditingQuoteId] = useState<string | null>(null);
   const [editedQuote, setEditedQuote] = useState<Quote>({
     id: '',
@@ -61,6 +62,15 @@ export default function QuotesTable() {
     const user = users.find((user) => user.id === userId);
     return user ? user.name : 'Unknown User';
   };
+
+  // Filter projects based on search term
+  const filteredQuotes = quotes.filter(
+    (quote) =>
+      quote.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      quote.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      quote.status.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      getUserNameById(quote.user_id).toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // Handle the edit button click
   const handleEditClick = (quote: Quote) => {
@@ -120,6 +130,17 @@ export default function QuotesTable() {
 
   return (
     <div>
+      {/* Search Input */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search quotes..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-2 border rounded"
+        />
+      </div>
+
       <div className="overflow-x-auto border rounded-lg">
         <table className="min-w-full bg-white border-collapse">
           <thead>
@@ -132,7 +153,7 @@ export default function QuotesTable() {
             </tr>
           </thead>
           <tbody className="text-gray-700 text-sm">
-            {quotes.map((quote) => (
+            {filteredQuotes.map((quote) => (
               <tr key={quote.id} className="border-t hover:bg-gray-50 transition">
                 {editingQuoteId === quote.id ? (
                   <>
