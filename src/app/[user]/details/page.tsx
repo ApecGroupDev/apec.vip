@@ -9,7 +9,6 @@ interface UserData {
   name: string;
   id: number;
   email: string;
-  age: number;
   special_code: string;
 }
 
@@ -221,9 +220,6 @@ export default function Page({ params }: PageProps) {
                 </p>
                 <p className="text-gray-800 text-md my-5 text-wrap">
                   <strong className="text-red-500">Email:</strong> {userData.email}
-                </p>
-                <p className="text-gray-800 text-md my-5 text-wrap">
-                  <strong className="text-red-500">Age:</strong> {userData.age}
                 </p>
                 <p className="text-gray-800 text-md my-5 text-wrap">
                   <strong className="text-red-500">Special Code:</strong> {userData.special_code}
