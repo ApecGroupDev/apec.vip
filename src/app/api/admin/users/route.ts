@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
   try {
     const { name, email, special_code } = await req.json(); // Use req.json() to parse the body
     const [result]: any = await db.execute(
-      'INSERT INTO users (name, email, special_code) VALUES (?, ?, ?, ?)',
+      'INSERT INTO users (name, email, special_code) VALUES (?, ?, ?)',
       [name, email, special_code || null]
     );
     return NextResponse.json({ id: result.insertId, name, email, special_code }, { status: 201 });
