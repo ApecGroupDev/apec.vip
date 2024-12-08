@@ -108,7 +108,7 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center text-white px-8 py-16">
+    <div className="flex flex-col items-center justify-center text-white px-8">
       {!isVerified ? (
         <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <h2 className="text-4xl font-extrabold text-black mb-6">
@@ -130,39 +130,79 @@ export default function Page({ params }: PageProps) {
           <button
             onClick={handleVerify}
             className="w-full bg-red-600 text-white font-semibold py-4 rounded-xl shadow-xl hover:bg-red-700 focus:outline-none transition-all duration-200 transform hover:scale-105"
-          >
-            Proceed
+          >            Proceed
           </button>
           {verificationError && <p className="text-red-600 font-semibold mt-4">{verificationError}</p>}
         </div>
       ) : (
-        <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-          <h1 className="text-4xl font-extrabold text-black mb-6">
-            Welcome, {userData.name}
+        <div className="container mx-auto my-5 px-4 py-8">
+          <h1 className="text-5xl font-extrabold mb-6 text-black">
+            Welcome, <span className="text-red-600">{userData.name}</span>
           </h1>
-          <p className="text-gray-700 text-lg mb-8">
-            Your access has been successfully verified. Below are your details:
-          </p>
-          <div className="bg-gray-100 rounded-xl p-8 text-left space-y-6 border border-gray-300">
-            <p className="text-gray-800 text-md text-wrap">
-              <strong className="text-red-500">Username:</strong> {userData.name}
-            </p>
-            <p className="text-gray-800 text-md text-wrap">
-              <strong className="text-red-500">Email:</strong> {userData.email}
-            </p>
-            <p className="text-gray-800 text-md text-wrap">
-              <strong className="text-red-500">Age:</strong> {userData.age}
-            </p>
-            <p className="text-gray-800 text-md text-wrap">
-              <strong className="text-red-500">Special Code:</strong> {userData.special_code}
-            </p>
+          <div className="space-y-6">
+            {/* Welcome Card */}
+            <div className="bg-gradient-to-r from-yellow-500 via-red-700 to-yellow-500 text-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
+              <p className="text-2xl font-bold mb-2">
+                Exclusive Access Unlocked
+              </p>
+              <p className="text-lg">
+                As a VIP member, you are granted access to a world of premium perks and opportunities. We are thrilled to have you on board!
+              </p>
+            </div>
+
+            {/* Call to Action */}
+            <div className="bg-yellow-50 shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
+              <h2 className="text-2xl font-bold text-black mb-4">
+                Explore Your VIP World
+              </h2>
+              <p className="text-gray-800 mb-4">
+                Discover a curated selection of experiences and offers tailored just for you.
+              </p>
+              <div className="flex flex-col space-y-4">
+                <button className="w-full sm:w-full lg:w-1/4 bg-red-600 text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-red-700 transition-all duration-200 transform hover:scale-105">
+                  Projects
+                </button>
+                <button className="w-full sm:w-full lg:w-1/4 bg-red-600 text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-red-700 transition-all duration-200 transform hover:scale-105">
+                  Quotes
+                </button>
+                <button className="w-full sm:w-full lg:w-1/4 bg-red-600 text-white font-semibold py-3 px-6 rounded-xl shadow-xl hover:bg-red-700 transition-all duration-200 transform hover:scale-105">
+                  Details
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+
       )}
       {isVerified && (
         <div>
+          {/* Projects Section */}
           <Projects userId={userData.id} />
+
+          {/* Quotes Section */}
           <Quotes userId={userData.id} />
+
+          {/* Details Section */}
+          <div className="container mx-auto my-5 px-4 py-8">
+            <h3 className="text-2xl font-bold text-black mb-6">Here are your details,  <span className='text-red-600'>{userData.name}</span></h3>
+            <div className="space-y-6">
+              <div className="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
+                <p className="text-gray-800 text-md text-wrap">
+                  <strong className="text-red-500">Username:</strong> {userData.name}
+                </p>
+                <p className="text-gray-800 text-md text-wrap">
+                  <strong className="text-red-500">Email:</strong> {userData.email}
+                </p>
+                <p className="text-gray-800 text-md text-wrap">
+                  <strong className="text-red-500">Age:</strong> {userData.age}
+                </p>
+                <p className="text-gray-800 text-md text-wrap">
+                  <strong className="text-red-500">Special Code:</strong> {userData.special_code}
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
       )}
     </div>
