@@ -221,7 +221,6 @@ export default function AdminPage() {
                     <th className="py-3 px-6 text-left font-medium">ID</th>
                     <th className="py-3 px-6 text-left font-medium">Name</th>
                     <th className="py-3 px-6 text-left font-medium">Email</th>
-                    <th className="py-3 px-6 text-left font-medium">Age</th>
                     <th className="py-3 px-6 text-left font-medium">Special Code</th>
                     <th className="py-3 px-6 text-left font-medium">Actions</th>
                   </tr>
@@ -248,16 +247,6 @@ export default function AdminPage() {
                               value={editedUser.email || ""}
                               onChange={(e) =>
                                 setEditedUser({ ...editedUser, email: e.target.value })
-                              }
-                              className="border w-full p-2 rounded"
-                            />
-                          </td>
-                          <td className="py-3 px-6">
-                            <input
-                              type="number"
-                              value={editedUser.age || ""}
-                              onChange={(e) =>
-                                setEditedUser({ ...editedUser, age: parseInt(e.target.value, 10) })
                               }
                               className="border w-full p-2 rounded"
                             />
@@ -292,7 +281,6 @@ export default function AdminPage() {
                           <td className="py-3 px-6">{user.id}</td>
                           <td className="py-3 px-6">{user.name}</td>
                           <td className="py-3 px-6">{user.email}</td>
-                          <td className="py-3 px-6">{user.age}</td>
                           <td className="py-3 px-6">{user.special_code}</td>
                           <td className="py-3 px-6">
                             <button
