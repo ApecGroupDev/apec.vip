@@ -1,11 +1,13 @@
 "use client";
 
 import { useRouter } from "next/navigation"
+import ScrollToTopButton from "@/components/scrollToTop";
 
 export default function Home() {
   const router = useRouter();
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 space-y-20">
+      <ScrollToTopButton />
       {/* Hero Section */}
       <header className="relative bg-gradient-to-r from-black to-gray-900 text-white text-center py-24 px-8 md:py-40 md:px-12 rounded-lg shadow-xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-800 opacity-90"></div>
