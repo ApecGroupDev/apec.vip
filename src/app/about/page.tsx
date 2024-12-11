@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation"
 
 export default function About() {
+  const router = useRouter();
   return (
     <div className="max-w-7xl mx-auto px-6 py-20 space-y-28">
       {/* Hero Section */}
@@ -11,7 +15,10 @@ export default function About() {
         <p className="text-lg md:text-2xl mb-10 max-w-3xl mx-auto">
           Empowering industries with cutting-edge solutions since 1989. Innovation, excellence, and sustainability at the core of everything we do.
         </p>
-        <button className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105">
+        <button
+          className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          onClick={() => router.push("/services")}
+        >
           Explore Our Services
         </button>
       </header>
@@ -120,7 +127,10 @@ export default function About() {
         <p className="text-lg mb-10 max-w-4xl mx-auto">
           Partner with APEC to leverage our expertise and cutting-edge technology. Together, we’ll achieve extraordinary success.
         </p>
-        <button className="bg-[#e82228] py-4 px-12 rounded-lg font-medium text-lg shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105">
+        <button
+          className="bg-[#e82228] py-4 px-12 rounded-lg font-medium text-lg shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          onClick={() => router.push("/contact")}
+        >
           Contact Us
         </button>
       </section>
