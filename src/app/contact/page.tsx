@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import ScrollToTopButton from "@/components/scrollToTop";
 
 export default function Contact() {
   return (
@@ -139,6 +142,7 @@ export default function Contact() {
           Contact Support
         </button>
       </section>
+      <ScrollToTopButton />
     </div>
   );
 }
