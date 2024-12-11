@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import ScrollToTopButton from "@/components/scrollToTop";
 
 export default function Services() {
   const router = useRouter();
@@ -22,7 +23,6 @@ export default function Services() {
           Get in Touch
         </button>
       </header>
-
       {/* Services Section with Hover Animations */}
       <section>
         <h2 className="text-5xl font-extrabold text-center text-[#e82228] mb-16">Our Expertise in Action</h2>
@@ -169,6 +169,7 @@ export default function Services() {
           Contact Us Now
         </button>
       </section>
+      <ScrollToTopButton />
     </div>
   );
 }
