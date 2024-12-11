@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 
 export default function Services() {
+  const router = useRouter();
   return (
     <div className="max-w-7xl mx-auto px-6 py-20 space-y-28">
       {/* Hero Section */}
@@ -11,7 +15,10 @@ export default function Services() {
         <p className="text-lg md:text-2xl mb-10 max-w-4xl mx-auto">
           At APEC, we’re not just offering services — we’re driving the future of the petroleum industry. From modern installations to innovative marketing solutions, our goal is to empower businesses to excel.
         </p>
-        <button className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105">
+        <button
+          className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          onClick={() => router.push("/contact")}
+        >
           Get in Touch
         </button>
       </header>
@@ -155,7 +162,10 @@ export default function Services() {
         <p className="text-lg mb-10 max-w-4xl mx-auto">
           Partner with us to revolutionize your business with cutting-edge services designed for success. Let APEC help you drive innovation and growth today!
         </p>
-        <button className="bg-[#e82228] py-4 px-12 rounded-lg font-medium text-lg shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105">
+        <button
+          className="bg-[#e82228] py-4 px-12 rounded-lg font-medium text-lg shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          onClick={() => router.push("/contact")}
+        >
           Contact Us Now
         </button>
       </section>
