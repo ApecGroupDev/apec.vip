@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { notFound } from 'next/navigation';
 import Projects from './Projects';
 import Quotes from './Quotes';
+import ScrollToTopButton from '@/components/scrollToTop';
 
 interface UserData {
   name: string;
@@ -154,6 +155,7 @@ export default function Page({ params }: PageProps) {
         </div>
       ) : (
         <div className="container mx-auto mb-5 px-4 pb-8">
+          <ScrollToTopButton />
           <h1 className="text-5xl font-extrabold mb-6 text-black">
             Welcome, <span className="text-red-600">{userData.name}</span>
           </h1>
