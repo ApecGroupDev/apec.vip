@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation"
+import ScrollToTopButton from "@/components/scrollToTop";
 
 export default function About() {
   const router = useRouter();
@@ -134,6 +135,7 @@ export default function About() {
           Contact Us
         </button>
       </section>
+      <ScrollToTopButton />
     </div>
   );
 }
