@@ -1,4 +1,9 @@
+"use client";
+
+import { useRouter } from "next/navigation"
+
 export default function Home() {
+  const router = useRouter();
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 space-y-20">
       {/* Hero Section */}
@@ -11,10 +16,16 @@ export default function Home() {
           Your trusted partner for premium fuel, advanced solutions, and unmatched support. We’re here to exceed your expectations.
         </p>
         <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 relative z-10">
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg w-full sm:w-auto">
+          <button
+            className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg w-full sm:w-auto"
+            onClick={() => router.push("/services")}
+          >
             Explore Our Services
           </button>
-          <button className="bg-white hover:bg-gray-200 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg w-full sm:w-auto">
+          <button
+            className="bg-white hover:bg-gray-200 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg w-full sm:w-auto"
+            onClick={() => router.push("/contact")}
+          >
             Contact Us
           </button>
         </div>
@@ -27,7 +38,10 @@ export default function Home() {
         <p className="text-gray-700 text-lg max-w-4xl mx-auto leading-relaxed">
           We deliver exceptional service tailored to your needs. Whether it's fuel supply, expert advice, or maintenance support, we ensure a seamless and superior experience for our valued clients.
         </p>
-        <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg">
+        <button
+          className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg"
+          onClick={() => router.push("/services")}
+        >
           Learn More
         </button>
       </section>
@@ -138,7 +152,10 @@ export default function Home() {
         <p className="text-lg mb-10 max-w-4xl mx-auto">
           Experience the difference of personalized service and top-quality solutions. Let us help you achieve more.
         </p>
-        <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg">
+        <button
+          className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-4 px-10 rounded-full transition-transform duration-300 transform hover:scale-110 shadow-lg"
+          onClick={() => router.push("/contact")}
+        >
           Get Started Today
         </button>
       </section>
