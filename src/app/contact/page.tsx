@@ -1,9 +1,27 @@
 "use client";
 
 import React from "react";
+import { useRef } from "react";
 import ScrollToTopButton from "@/components/scrollToTop";
 
 export default function Contact() {
+
+  // Ref for contact form
+  const formRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
+    if (ref.current) {
+      const offset = 150; // Adjust this value for spacing from the top
+      const elementPosition = ref.current.offsetTop;
+      const scrollToPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: scrollToPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-20 space-y-28">
       {/* Hero Section */}
@@ -14,13 +32,16 @@ export default function Contact() {
         <p className="text-lg md:text-2xl mb-10 max-w-4xl mx-auto">
           We'd love to hear from you. Let us know how we can assist you today!
         </p>
-        <button className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105">
+        <button
+          className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          onClick={() => scrollToSection(formRef)}
+        >
           Contact Us Now
         </button>
       </header>
 
       {/* Contact Form Section */}
-      <section>
+      <section ref={formRef}>
         <h2 className="text-4xl font-bold text-center text-black mb-12">
           Send Us a Message
         </h2>
@@ -138,9 +159,6 @@ export default function Contact() {
         <p className="text-lg mb-10 max-w-4xl mx-auto">
           Have a question? We’re here to help! Reach out, and we’ll get back to you as soon as possible.
         </p>
-        <button className="bg-[#e82228] py-4 px-12 rounded-lg font-medium text-lg shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105">
-          Contact Support
-        </button>
       </section>
       <ScrollToTopButton />
     </div>
