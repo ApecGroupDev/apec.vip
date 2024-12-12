@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ProjectModal from './ProjectModal'; // Adjust the path if necessary
+import Loading from '@/components/loading';
 
 interface Project {
   id: number;
@@ -59,7 +60,11 @@ export default function Projects({ userId }: ProjectsProps) {
   };
 
   if (loading) {
-    return <div className="text-center py-8 text-gray-600">Loading projects...</div>;
+    return (
+      <div className="text-center">
+        <Loading />
+      </div>
+    );
   }
 
   if (projects.length === 0) {
