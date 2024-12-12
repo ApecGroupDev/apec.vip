@@ -6,6 +6,7 @@ import ProjectsTable from './ProjectsTable';
 import AddProject from './AddProject';
 import QuotesTable from './QuotesTable';
 import AddQuote from './AddQuote';
+import Loading from '@/components/loading';
 
 interface User {
   id: string;
@@ -176,8 +177,8 @@ export default function AdminPage() {
   // Render loading state while data is being fetched
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <p className="text-lg font-semibold text-gray-700">Loading...</p>
+      <div className='text-center'>
+        <Loading />
       </div>
     );
   }
