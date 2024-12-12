@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import QuoteModal from './QuoteModal';
+import Loading from '@/components/loading';
 
 interface Quote {
   id: number;
@@ -54,7 +55,11 @@ export default function Quotes({ userId }: QuotesProps) {
   };
 
   if (loading) {
-    return <div className="text-center py-8 text-gray-600">Loading quotes...</div>;
+    return (
+      <div className="text-center mt-5">
+        <Loading />
+      </div>
+    );
   }
 
   if (quotes.length === 0) {
