@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import ProjectModal from './ProjectModal'; // Adjust the path if necessary
 import Loading from '@/components/loading';
+import Progress from '@/components/progress';
 
 interface Project {
   id: number;
@@ -10,6 +11,7 @@ interface Project {
   description: string;
   imageUrl?: string;
   status?: string;
+  progress?: number;
 }
 
 interface ProjectsProps {
@@ -25,9 +27,30 @@ export default function Projects({ userId }: ProjectsProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // const fetchProjects = async () => {
+  //   try {
+  //     if (!userId) throw new Error('User ID is missing');
+  //     const response = await fetch(
+  //       `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/projects?userId=${userId}`,
+  //       { cache: 'no-store' }
+  //     );
+
+  //     if (!response.ok) throw new Error(`Failed to fetch projects: ${response.status}`);
+
+  //     const data = await response.json();
+  //     setProjects(data);
+  //   } catch (error) {
+  //     console.error('Error fetching projects:', error);
+  //     setProjects([]);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const fetchProjects = async () => {
     try {
       if (!userId) throw new Error('User ID is missing');
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/users/projects?userId=${userId}`,
         { cache: 'no-store' }
@@ -36,7 +59,15 @@ export default function Projects({ userId }: ProjectsProps) {
       if (!response.ok) throw new Error(`Failed to fetch projects: ${response.status}`);
 
       const data = await response.json();
-      setProjects(data);
+
+      // Add a mock progress property
+      const projectsWithProgress = data.map((project: Project) => ({
+        ...project,
+        progress: Math.floor(Math.random() * 101), // Random progress between 0 and 100
+      }));
+
+      console.log('Projects with progress:', projectsWithProgress); // Debugging
+      setProjects(projectsWithProgress);
     } catch (error) {
       console.error('Error fetching projects:', error);
       setProjects([]);
@@ -93,6 +124,10 @@ export default function Projects({ userId }: ProjectsProps) {
                   {project.status}
                 </span>
               )}
+              {/* Render progress bar */}
+              <div className="mt-4">
+                <Progress progress={project.progress ?? 0} />
+              </div>
               <button
                 onClick={() => openModal(project)}
                 className="block mt-4 text-sm font-semibold text-orange-500 hover:underline"
