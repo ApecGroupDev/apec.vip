@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Loading from '@/components/loading';
 
 interface Quote {
   id: string;
@@ -125,7 +126,11 @@ export default function QuotesTable() {
 
   // Render loading state while fetching data
   if (loading) {
-    return <p className="text-center">Loading quotes...</p>;
+    return (
+      <div className="text-center">
+        <Loading />
+      </div>
+    );
   }
 
   return (
