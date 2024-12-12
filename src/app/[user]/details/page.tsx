@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import Projects from './Projects';
 import Quotes from './Quotes';
 import ScrollToTopButton from '@/components/scrollToTop';
+import Loading from '@/components/loading';
 
 interface UserData {
   name: string;
@@ -119,7 +120,11 @@ export default function Page({ params }: PageProps) {
   }, [user]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="text-center">
+        <Loading />
+      </div>
+    );
   }
 
   if (!userData) {
