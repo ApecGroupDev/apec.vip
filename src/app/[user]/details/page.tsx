@@ -134,16 +134,14 @@ export default function Page({ params }: PageProps) {
   return (
     <div className="flex flex-col items-center justify-center text-white px-8 py-16">
       {!isVerified ? (
-        <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-          <h2 className="text-4xl font-extrabold text-black mb-6">
-            <span className="bg-gradient-to-r from-yellow-600 via-yellow-700 to-yellow-500 bg-clip-text text-transparent text-5xl animate-pulse">
-              VIP
-            </span>
-            <span> ACCESS</span>
-          </h2>
-          <p className="text-gray-600 text-lg mb-6">
-            Enter the special code to unlock your personalized details.
-          </p>
+        <div
+          style={{ backgroundImage: `url('/images/Artboard1-8.png')` }}
+          className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+          <img
+            src="/images/Artboard1-8-1.png" // Replace with the actual path to your logo
+            alt="VIP Logo"
+            className="w-200 h-auto mx-auto mb-6" // Adjust the size and styling as needed
+          />
           <input
             type="text"
             value={enteredCode}
