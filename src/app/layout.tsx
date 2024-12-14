@@ -4,7 +4,7 @@ import Footer from '@/components/footer';
 
 export const metadata = {
   title: 'APEC VIP',
-  description: 'Welcome to My Website',
+  description: 'APEC VIPs Website',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
