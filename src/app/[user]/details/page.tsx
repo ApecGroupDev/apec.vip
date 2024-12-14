@@ -140,7 +140,7 @@ export default function Page({ params }: PageProps) {
           <img
             src="/images/Artboard1-8-1.png" // Replace with the actual path to your logo
             alt="VIP Logo"
-            className="w-200 h-auto mx-auto mb-6" // Adjust the size and styling as needed
+            className="w-100 h-auto mx-auto mb-6" // Adjust the size and styling as needed
           />
           <input
             type="text"
