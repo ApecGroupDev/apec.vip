@@ -148,7 +148,7 @@ export default function Page({ params }: PageProps) {
               value={enteredCode}
               onChange={(e) => setEnteredCode(e.target.value)}
               placeholder="Enter Access Code"
-              className="w-full bg-black border-transparent text-base sm:text-md text-center rounded-lg px-4 py-4 text-gray-800 focus:outline-none"
+              className="w-full bg-black border-transparent text-base sm:text-md text-center rounded-lg px-4 py-4 text-gray-800 focus:text-white focus:outline-none focus:ring-2 focus:ring-white transition-all"
             />
           </div>
           <button
