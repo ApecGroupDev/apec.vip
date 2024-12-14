@@ -136,13 +136,13 @@ export default function Page({ params }: PageProps) {
       {!isVerified ? (
         <div
           style={{ backgroundImage: `url('/images/Artboard1-8.png')` }}
-          className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-lg w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+          className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-xl w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <img
             src="/images/Artboard1-8-1.png" // Replace with the actual path to your logo
             alt="VIP Logo"
-            className="w-100 h-auto mx-auto mb-6" // Adjust the size and styling as needed
+            className="w-full h-auto mx-auto" // Adjust the size and styling as needed
           />
-          <div className="w-full sm:w-4/5 mx-auto rounded-lg bg-gradient-to-r from-amber-600 to-amber-300 p-[2px]">
+          <div className="w-full sm:w-3/5 mx-auto rounded-lg bg-gradient-to-r from-amber-600 to-amber-300 p-[2px]">
             <input
               type="text"
               value={enteredCode}
@@ -153,7 +153,7 @@ export default function Page({ params }: PageProps) {
           </div>
           <button
             onClick={handleVerify}
-            className="w-full sm:w-4/5 bg-red-600 text-white text-base sm:text-md py-4 mt-4 rounded-lg shadow-lg hover:bg-red-700 focus:outline-none transition-all duration-200 transform hover:scale-105"
+            className="w-full sm:w-3/5 bg-red-600 text-white text-base sm:text-md py-4 mt-4 rounded-lg shadow-lg hover:bg-red-700 focus:outline-none transition-all duration-200 transform hover:scale-105"
           >
             Submit
           </button>
