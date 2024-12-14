@@ -140,7 +140,7 @@ export default function Page({ params }: PageProps) {
           <img
             src="/images/VIP-gif.gif" // Replace with the actual path to your logo
             alt="VIP Logo"
-            className="h-auto mx-auto mb-4" // Adjust the size and styling as needed
+            className="w-full lg:w-1/2 h-auto mx-auto mb-4" // Adjust the size and styling as needed
           />
           <div className="w-full sm:w-3/5 mx-auto rounded-lg bg-gradient-to-r from-amber-600 to-amber-300 p-[2px]">
             <input
