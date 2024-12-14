@@ -138,9 +138,9 @@ export default function Page({ params }: PageProps) {
           style={{ backgroundImage: `url('/images/Artboard1-8.png')` }}
           className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-xl w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <img
-            src="/images/Artboard1-8-1.png" // Replace with the actual path to your logo
+            src="/images/VIP-gif.gif" // Replace with the actual path to your logo
             alt="VIP Logo"
-            className="w-full h-auto mx-auto" // Adjust the size and styling as needed
+            className="h-auto mx-auto mb-4" // Adjust the size and styling as needed
           />
           <div className="w-full sm:w-3/5 mx-auto rounded-lg bg-gradient-to-r from-amber-600 to-amber-300 p-[2px]">
             <input
