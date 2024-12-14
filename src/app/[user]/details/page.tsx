@@ -142,17 +142,20 @@ export default function Page({ params }: PageProps) {
             alt="VIP Logo"
             className="w-100 h-auto mx-auto mb-6" // Adjust the size and styling as needed
           />
-          <input
-            type="text"
-            value={enteredCode}
-            onChange={(e) => setEnteredCode(e.target.value)}
-            placeholder="Enter your special code"
-            className="w-full bg-gray-100 border-2 border-gray-300 rounded-xl px-6 py-4 text-gray-800 mb-6 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all"
-          />
+          <div className="w-full sm:w-4/5 mx-auto rounded-lg bg-gradient-to-r from-amber-600 to-amber-300 p-[2px]">
+            <input
+              type="text"
+              value={enteredCode}
+              onChange={(e) => setEnteredCode(e.target.value)}
+              placeholder="Enter Access Code"
+              className="w-full bg-black border-transparent text-base sm:text-md text-center rounded-lg px-4 py-4 text-gray-800 focus:outline-none"
+            />
+          </div>
           <button
             onClick={handleVerify}
-            className="w-full bg-red-600 text-white font-semibold py-4 rounded-xl shadow-xl hover:bg-red-700 focus:outline-none transition-all duration-200 transform hover:scale-105"
-          >            Proceed
+            className="w-full sm:w-4/5 bg-red-600 text-white text-base sm:text-md py-4 mt-4 rounded-lg shadow-lg hover:bg-red-700 focus:outline-none transition-all duration-200 transform hover:scale-105"
+          >
+            Submit
           </button>
           {verificationError && <p className="text-red-600 font-semibold mt-4">{verificationError}</p>}
         </div>
