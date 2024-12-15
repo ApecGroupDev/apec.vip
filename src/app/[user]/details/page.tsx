@@ -142,7 +142,7 @@ export default function Page({ params }: PageProps) {
       {!isVerified ? (
         <div
           style={{ backgroundImage: `url('/images/Artboard1-8.png')` }}
-          className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-xl w-full text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+          className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-xl w-full mb-72 text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <img
             src="/images/VIP-gif.gif" // Replace with the actual path to your logo
             alt="VIP Logo"
