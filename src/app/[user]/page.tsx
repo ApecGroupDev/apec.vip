@@ -47,7 +47,8 @@ export default async function UserPage({ params }: UserPageProps) {
     .join(' ');
 
   return (
-    <div className="flex flex-col">
+    <div style={{ backgroundImage: `url('/images/V5.jpg')` }}
+    className="flex flex-col min-h-screen bg-cover bg-center">
       <main className="flex-grow flex items-center justify-center px-6 py-20">
         <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center transform transition duration-300 hover:shadow-2xl">
           {/* Welcome Section */}
