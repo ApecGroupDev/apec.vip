@@ -47,10 +47,9 @@ export default async function UserPage({ params }: UserPageProps) {
     .join(' ');
 
   return (
-    <div style={{ backgroundImage: `url('/images/V5.jpg')` }}
-    className="flex flex-col min-h-screen bg-cover bg-center">
-      <main className="flex-grow flex items-center justify-center px-6 py-20">
-        <div className="bg-white shadow-lg rounded-3xl p-12 max-w-lg w-full text-center transform transition duration-300 hover:shadow-2xl">
+    <div style={{ backgroundImage: `url('/images/V5.jpg')` }} className="flex flex-col min-h-screen bg-cover bg-center">
+      <div className="flex-grow flex items-center justify-center mb-72">
+        <div className="bg-white shadow-lg rounded-3xl p-12 max-w-xl text-center transform transition duration-300 hover:shadow-2xl">
           {/* Welcome Section */}
           <h1 className="text-4xl font-extrabold text-gray-800 tracking-tight mb-6">
             Welcome, <span className="text-red-600">{formattedName}</span>
@@ -66,7 +65,7 @@ export default async function UserPage({ params }: UserPageProps) {
             </Link>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
