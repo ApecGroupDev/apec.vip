@@ -121,7 +121,7 @@ export default function Page({ params }: PageProps) {
 
   if (loading) {
     return (
-      <div className="text-center">
+      <div className="text-center m-12">
         <Loading />
       </div>
     );
