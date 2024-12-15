@@ -132,7 +132,8 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center text-white px-8 py-16">
+    <div style={{ backgroundImage: `url('/images/V5.jpg')` }}
+      className="bg-cover bg-center flex flex-col items-center justify-center min-h-screen text-white px-8 p-16">
       {!isVerified ? (
         <div
           style={{ backgroundImage: `url('/images/Artboard1-8.png')` }}

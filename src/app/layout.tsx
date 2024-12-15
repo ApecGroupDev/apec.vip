@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
 
         {/* Main content of the page */}
-        <div className="max-w-7xl mx-auto p-4">
+        <div className="max-w-full mx-auto">
           {children}  {/* This will render page content */}
         </div>
 
