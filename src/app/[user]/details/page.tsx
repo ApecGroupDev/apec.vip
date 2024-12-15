@@ -166,13 +166,13 @@ export default function Page({ params }: PageProps) {
           {verificationError && <p className="text-red-600 font-semibold mt-4">{verificationError}</p>}
         </div>
       ) : (
-        <div className="container mx-auto mb-5 px-4 pb-8">
+        <div className="container mx-auto mb-5 px-4 pb-8 max-w-7xl">
           <ScrollToTopButton />
-          <h1 className="text-5xl font-extrabold mb-6 text-black">
-            Welcome, <span className="text-red-600">{userData.name}</span>
-          </h1>
           <div className="space-y-6">
             {/* Welcome Card */}
+            <h1 className="text-5xl font-extrabold mb-6 text-black">
+              Welcome, <span className="text-red-600">{userData.name}</span>
+            </h1>
             <div className="bg-gradient-to-r from-yellow-500 via-red-700 to-yellow-500 text-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
               <p className="text-2xl font-bold mb-2">
                 Exclusive Access Unlocked
@@ -210,17 +210,17 @@ export default function Page({ params }: PageProps) {
             </div>
 
             {/* Projects Section */}
-            <div ref={projectsRef}>
+            <div ref={projectsRef} className='bg-gray-300 rounded-lg'>
               <Projects userId={userData.id} />
             </div>
 
             {/* Quotes Section */}
-            <div ref={quotesRef}>
+            <div ref={quotesRef} className='bg-gray-300 rounded-lg'>
               <Quotes userId={userData.id} />
             </div>
 
             {/* Details Section */}
-            <div ref={detailsRef} className="container mx-auto my-5 px-4 py-8">
+            <div ref={detailsRef} className="container mx-auto my-5 p-6 bg-gray-300 rounded-xl">
               <h3 className="text-2xl font-bold text-black mb-6">Here are your details,  <span className='text-red-600'>{userData.name}</span></h3>
               <div className="space-y-6">
                 <div className="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
