@@ -132,8 +132,13 @@ export default function Page({ params }: PageProps) {
   }
 
   return (
-    <div style={{ backgroundImage: `url('/images/V5.jpg')` }}
-      className="bg-cover bg-center flex flex-col items-center justify-center min-h-screen text-white px-8 p-16">
+    <div style={{
+      backgroundImage: `url('/images/V5.jpg')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+    }}
+      className="flex flex-col items-center justify-center min-h-screen text-white px-8 p-16">
       {!isVerified ? (
         <div
           style={{ backgroundImage: `url('/images/Artboard1-8.png')` }}
@@ -203,40 +208,35 @@ export default function Page({ params }: PageProps) {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
 
-      )}
-      {isVerified && (
-        <div>
-          {/* Projects Section */}
-          <div ref={projectsRef}>
-            <Projects userId={userData.id} />
-          </div>
+            {/* Projects Section */}
+            <div ref={projectsRef}>
+              <Projects userId={userData.id} />
+            </div>
 
-          {/* Quotes Section */}
-          <div ref={quotesRef}>
-            <Quotes userId={userData.id} />
-          </div>
+            {/* Quotes Section */}
+            <div ref={quotesRef}>
+              <Quotes userId={userData.id} />
+            </div>
 
-          {/* Details Section */}
-          <div ref={detailsRef} className="container mx-auto my-5 px-4 py-8">
-            <h3 className="text-2xl font-bold text-black mb-6">Here are your details,  <span className='text-red-600'>{userData.name}</span></h3>
-            <div className="space-y-6">
-              <div className="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
-                <p className="text-gray-800 text-md my-5 text-wrap">
-                  <strong className="text-red-500">Username:</strong> {userData.name}
-                </p>
-                <p className="text-gray-800 text-md my-5 text-wrap">
-                  <strong className="text-red-500">Email:</strong> {userData.email}
-                </p>
-                <p className="text-gray-800 text-md my-5 text-wrap">
-                  <strong className="text-red-500">Special Code:</strong> {userData.special_code}
-                </p>
+            {/* Details Section */}
+            <div ref={detailsRef} className="container mx-auto my-5 px-4 py-8">
+              <h3 className="text-2xl font-bold text-black mb-6">Here are your details,  <span className='text-red-600'>{userData.name}</span></h3>
+              <div className="space-y-6">
+                <div className="bg-white shadow-lg rounded-lg p-6 transform transition duration-300 hover:scale-105">
+                  <p className="text-gray-800 text-md my-5 text-wrap">
+                    <strong className="text-red-500">Username:</strong> {userData.name}
+                  </p>
+                  <p className="text-gray-800 text-md my-5 text-wrap">
+                    <strong className="text-red-500">Email:</strong> {userData.email}
+                  </p>
+                  <p className="text-gray-800 text-md my-5 text-wrap">
+                    <strong className="text-red-500">Special Code:</strong> {userData.special_code}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
       )}
     </div>
