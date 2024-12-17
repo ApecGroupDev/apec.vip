@@ -35,8 +35,8 @@ export default function Home() {
 
       {/* About Section */}
       <section className="text-center space-y-6">
-        <h2 className="text-4xl font-bold text-black">About Our VIP Services</h2>
-        <p className="text-gray-700 text-lg max-w-4xl mx-auto leading-relaxed">
+        <h2 className="text-4xl font-bold text-white">About Our VIP Services</h2>
+        <p className="text-gray-300 text-lg max-w-4xl mx-auto leading-relaxed">
           We deliver exceptional service tailored to your needs. Whether it's fuel supply, expert advice, or maintenance support, we ensure a seamless and superior experience for our valued clients.
         </p>
         <button
@@ -49,7 +49,7 @@ export default function Home() {
 
       {/* Services Section */}
       <section>
-        <h2 className="text-4xl font-bold text-center text-black mb-12">Our Services</h2>
+        <h2 className="text-4xl font-bold text-center text-white mb-12">Our Services</h2>
         <div className="grid gap-8 md:grid-cols-3">
           {[
             {
@@ -81,7 +81,7 @@ export default function Home() {
 
       {/* Innovations Section */}
       <section>
-        <h2 className="text-4xl font-bold text-center text-black mb-12">Innovative Solutions</h2>
+        <h2 className="text-4xl font-bold text-center text-white mb-12">Innovative Solutions</h2>
         <div className="grid gap-8 md:grid-cols-3">
           {[
             {
@@ -113,7 +113,7 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <section className="text-center space-y-12">
-        <h2 className="text-4xl font-bold text-black">What Our Clients Say</h2>
+        <h2 className="text-4xl font-bold text-white">What Our Clients Say</h2>
         <div className="grid gap-8 md:grid-cols-3">
           {[
             {
