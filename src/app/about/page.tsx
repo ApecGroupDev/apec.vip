@@ -9,7 +9,7 @@ export default function About() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-20 space-y-28">
       {/* Hero Section */}
-      <header className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-40 px-8 rounded-xl shadow-xl overflow-hidden">
+      <header className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-40 px-8 rounded-3xl shadow-xl overflow-hidden">
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
           Discover APEC: Shaping the Future of Petroleum
         </h1>
@@ -17,7 +17,7 @@ export default function About() {
           Empowering industries with cutting-edge solutions since 1989. Innovation, excellence, and sustainability at the core of everything we do.
         </p>
         <button
-          className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          className="bg-[#e82228] text-white py-3 px-8 rounded-3xl font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
           onClick={() => router.push("/services")}
         >
           Explore Our Services
@@ -40,7 +40,7 @@ export default function About() {
             <img
               src="https://via.placeholder.com/500x300" // Replace with real image
               alt="APEC team"
-              className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"
+              className="rounded-3xl shadow-xl transform hover:scale-105 transition-transform duration-300"
             />
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function About() {
           ].map((item, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2"
+              className="bg-white rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-2"
             >
               {item.icon}
               <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
@@ -116,20 +116,20 @@ export default function About() {
             <img
               src="https://via.placeholder.com/500x300" // Replace with real image
               alt="APEC Services"
-              className="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300"
+              className="rounded-3xl shadow-xl transform hover:scale-105 transition-transform duration-300"
             />
           </div>
         </div>
       </section>
 
       {/* Call to Action Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-20 px-8 rounded-xl shadow-xl">
+      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-20 px-8 rounded-3xl shadow-xl">
         <h2 className="text-5xl font-bold mb-6">Let’s Build the Future Together</h2>
         <p className="text-lg mb-10 max-w-4xl mx-auto">
           Partner with APEC to leverage our expertise and cutting-edge technology. Together, we’ll achieve extraordinary success.
         </p>
         <button
-          className="bg-[#e82228] py-4 px-12 rounded-lg font-medium text-lg shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          className="bg-[#e82228] py-4 px-12 rounded-full font-medium text-lg shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
           onClick={() => router.push("/contact")}
         >
           Contact Us
