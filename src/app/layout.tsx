@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
+
 export const metadata = {
   title: 'APEC VIP',
   description: 'APEC VIPs Website',
@@ -17,7 +18,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
 
         {/* Main content of the page */}
-        <div className="max-w-full mx-auto">
+        <div
+          style={{
+            backgroundImage: `url('/images/V5.jpg')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+          }}
+          className="max-w-full mx-auto">
           {children}  {/* This will render page content */}
         </div>
 
