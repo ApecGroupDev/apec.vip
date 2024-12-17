@@ -177,21 +177,21 @@ export default function AdminPage() {
   // Render loading state while data is being fetched
   if (loading) {
     return (
-      <div className='text-center'>
+      <div className='text-center m-12'>
         <Loading />
       </div>
     );
   }
 
   return (
-    <div className="py-8 px-4">
-      <div className="max-w-6xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+    <div className="py-8 px-4 min-h-screen flex-items-center justify-center">
+      <div className="max-w-6xl mx-auto bg-white p-8 rounded-3xl shadow-lg">
         {/* Header Section */}
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
           <button
             onClick={handleLogout}
-            className="bg-red-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300"
+            className="bg-red-600 text-white px-5 py-2 rounded-full font-medium hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300"
           >
             Logout
           </button>
