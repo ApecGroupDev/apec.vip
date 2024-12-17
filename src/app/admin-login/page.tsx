@@ -44,8 +44,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center px-8 py-16 text-white">
-      <div className="bg-white p-12 rounded-xl shadow-xl max-w-md w-full space-y-8">
+    <div className="flex items-center justify-center px-8 py-16 text-white min-h-screen">
+      <div className="bg-white p-12 rounded-3xl shadow-xl max-w-md w-full space-y-8 mb-72">
         <h1 className="text-3xl font-extrabold text-center text-black">
           <span className="text-red-600">Admin </span>
           Login
@@ -63,7 +63,7 @@ export default function LoginPage() {
           </div>
           <button
             type="submit"
-            className="w-full bg-red-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-red-700 focus:outline-none transition duration-200 transform hover:scale-105"
+            className="w-full bg-red-600 text-white py-3 rounded-3xl text-lg font-semibold hover:bg-red-700 focus:outline-none transition duration-200 transform hover:scale-105"
           >
             Login
           </button>
