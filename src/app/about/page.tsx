@@ -26,13 +26,13 @@ export default function About() {
 
       {/* History Section */}
       <section className="space-y-12">
-        <h2 className="text-4xl font-bold text-center text-black">Our Legacy</h2>
+        <h2 className="text-4xl font-bold text-center text-white">Our Legacy</h2>
         <div className="flex flex-col md:flex-row gap-12">
           <div className="flex-1 space-y-6">
-            <p className="text-lg leading-relaxed text-gray-700">
+            <p className="text-xl leading-relaxed text-gray-200">
               Founded in 1989 as **Atlanta Petroleum Equipment Company**, we have grown from a small service operation into a leading provider of comprehensive petroleum solutions, including equipment installation, repair, and full operational support.
             </p>
-            <p className="text-lg leading-relaxed text-gray-700">
+            <p className="text-xl leading-relaxed text-gray-200">
               With offices in **Atlanta, Georgia** and **Houston, Texas**, we’re proud to serve clients across the United States, delivering innovative solutions tailored to meet the evolving needs of the petroleum industry.
             </p>
           </div>
@@ -48,7 +48,7 @@ export default function About() {
 
       {/* Mission, Vision, Values Section */}
       <section className="text-center space-y-20">
-        <h2 className="text-4xl font-bold text-black">Our Commitment to Excellence</h2>
+        <h2 className="text-4xl font-bold text-white">Our Commitment to Excellence</h2>
         <div className="grid md:grid-cols-3 gap-12">
           {[
             {
@@ -96,13 +96,13 @@ export default function About() {
 
       {/* Expertise Section */}
       <section>
-        <h2 className="text-4xl font-bold text-center text-black mb-12">Our Expertise</h2>
+        <h2 className="text-4xl font-bold text-center text-white mb-12">Our Expertise</h2>
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-xl text-gray-200 mb-6">
               At APEC, we’re not just offering services — we’re driving the future of the petroleum industry. From modern installations to innovative marketing solutions, our goal is to empower businesses to excel.
             </p>
-            <ul className="text-lg text-gray-700 list-disc pl-8 space-y-4">
+            <ul className="text-xl text-gray-200 list-disc pl-8 space-y-4">
               <li><strong>Imaging & Canopies</strong></li>
               <li><strong>Environmental Compliance</strong></li>
               <li><strong>C-Store Renovations</strong></li>

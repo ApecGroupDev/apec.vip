@@ -42,7 +42,7 @@ export default function Contact() {
 
       {/* Contact Form Section */}
       <section ref={formRef}>
-        <h2 className="text-4xl font-bold text-center text-black mb-12">
+        <h2 className="text-4xl font-bold text-center text-white mb-12">
           Send Us a Message
         </h2>
         <div className="grid md:grid-cols-2 gap-12">
@@ -107,12 +107,12 @@ export default function Contact() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div className="text-center">
-              <h3 className="text-2xl font-semibold text-black">Our Office</h3>
+              <h3 className="text-2xl font-semibold text-white">Our Office</h3>
               <div className="space-y-4">
                 {/* Address Section */}
                 <div className="flex items-center space-x-3 mt-5">
                   <div className="text-xl font-semibold text-[#e82228]">Address:</div>
-                  <p className="text-lg text-gray-700">
+                  <p className="text-lg text-gray-200">
                     4732-E North Royal Atlanta Drive, Tucker, GA 30084
                   </p>
                 </div>
@@ -120,7 +120,7 @@ export default function Contact() {
                 {/* Phone Section */}
                 <div className="flex items-center space-x-3">
                   <div className="text-xl font-semibold text-[#e82228]">Phone:</div>
-                  <p className="text-lg text-gray-700">855-444-APEC</p>
+                  <p className="text-lg text-gray-200">855-444-APEC</p>
                 </div>
 
                 {/* Email Section */}
