@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-16 space-y-20">
       {/* Hero Section */}
-      <header className="relative bg-gradient-to-r from-black to-gray-900 text-white text-center py-24 px-8 md:py-40 md:px-12 rounded-lg shadow-xl overflow-hidden">
+      <header className="relative bg-gradient-to-r from-black to-gray-900 text-white text-center py-24 px-8 md:py-40 md:px-12 rounded-3xl shadow-xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-800 opacity-90"></div>
         <h1 className="relative text-4xl md:text-7xl font-extrabold mb-6 leading-tight z-10">
           Welcome to Our VIP Services
@@ -70,7 +70,7 @@ export default function Home() {
           ].map((service, index) => (
             <div
               key={index}
-              className="bg-white shadow-2xl rounded-lg p-8 hover:shadow-3xl transition-shadow duration-300 transform hover:-translate-y-2"
+              className="bg-white shadow-2xl rounded-3xl p-8 hover:shadow-3xl transition-shadow duration-300 transform hover:-translate-y-2"
             >
               <h3 className="text-2xl font-semibold text-black mb-4">{service.title}</h3>
               <p className="text-gray-600 leading-relaxed">{service.description}</p>
@@ -102,7 +102,7 @@ export default function Home() {
           ].map((solution, index) => (
             <div
               key={index}
-              className="bg-white shadow-2xl rounded-lg p-8 hover:shadow-3xl transition-shadow duration-300 transform hover:-translate-y-2"
+              className="bg-white shadow-2xl rounded-3xl p-8 hover:shadow-3xl transition-shadow duration-300 transform hover:-translate-y-2"
             >
               <h3 className="text-2xl font-semibold text-black mb-4">{solution.title}</h3>
               <p className="text-gray-600 leading-relaxed">{solution.description}</p>
@@ -137,7 +137,7 @@ export default function Home() {
           ].map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white shadow-2xl rounded-lg p-8 hover:shadow-3xl transition-shadow duration-300 transform hover:-translate-y-2"
+              className="bg-white shadow-2xl rounded-3xl p-8 hover:shadow-3xl transition-shadow duration-300 transform hover:-translate-y-2"
             >
               <p className="text-gray-600 italic mb-4">"{testimonial.quote}"</p>
               <h4 className="text-xl font-semibold text-black">{testimonial.name}</h4>
@@ -148,7 +148,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="relative bg-gradient-to-r from-black to-gray-900 text-white text-center py-20 px-8 rounded-lg shadow-xl overflow-hidden">
+      <section className="relative bg-gradient-to-r from-black to-gray-900 text-white text-center py-20 px-8 rounded-3xl shadow-xl overflow-hidden">
         <h2 className="text-5xl font-bold mb-6">Partner With Us</h2>
         <p className="text-lg mb-10 max-w-4xl mx-auto">
           Experience the difference of personalized service and top-quality solutions. Let us help you achieve more.
