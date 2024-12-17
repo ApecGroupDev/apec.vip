@@ -3,7 +3,12 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#f5f5f5] text-black py-12 font-inter">
+    <footer
+      className="text-black py-12 font-inter relative"
+      style={{
+        background: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(245, 245, 245, 1) 80%, #ffffff 100%)`,
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Row 1: Logo */}
         <div className="flex justify-center mb-8">
@@ -11,7 +16,7 @@ export default function Footer() {
             <img
               src="https://theapecgroup.com/wp-content/uploads/2022/12/APEC-Since1989.png"
               alt="APEC Logo"
-              className="transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[200px] h-auto" // Adjust size here
+              className="transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[200px] h-auto"
             />
           </Link>
         </div>
@@ -25,7 +30,10 @@ export default function Footer() {
         <div className="flex justify-center mb-6">
           <p className="text-base lg:text-lg text-gray-600">
             855-444-APEC |{' '}
-            <a href="mailto:sales@TheAPECgroup.com" className="text-[#e82228] hover:text-[#9c2e2b] transition-colors">
+            <a
+              href="mailto:sales@TheAPECgroup.com"
+              className="text-[#e82228] hover:text-[#9c2e2b] transition-colors"
+            >
               Sales@TheAPECgroup.com
             </a>
           </p>
@@ -75,15 +83,11 @@ export default function Footer() {
         <div className="flex justify-center mb-6">
           <p className="text-sm lg:text-base text-gray-600">
             <Link href="/terms">
-              <span className="hover:text-[#e82228] cursor-pointer transition-colors">
-                Terms & Conditions
-              </span>
+              <span className="hover:text-[#e82228] cursor-pointer transition-colors">Terms & Conditions</span>
             </Link>{' '}
             |{' '}
             <Link href="/privacy">
-              <span className="hover:text-[#e82228] cursor-pointer transition-colors">
-                Privacy Policy
-              </span>
+              <span className="hover:text-[#e82228] cursor-pointer transition-colors">Privacy Policy</span>
             </Link>
           </p>
         </div>
