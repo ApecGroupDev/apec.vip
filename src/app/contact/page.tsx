@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <div className="max-w-7xl mx-auto px-6 py-20 space-y-28">
       {/* Hero Section */}
-      <header className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-40 px-8 rounded-lg shadow-lg overflow-hidden">
+      <header className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-40 px-8 rounded-3xl shadow-lg overflow-hidden">
         <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
           Get in Touch
         </h1>
@@ -33,7 +33,7 @@ export default function Contact() {
           We'd love to hear from you. Let us know how we can assist you today!
         </p>
         <button
-          className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+          className="bg-[#e82228] text-white py-3 px-8 rounded-full font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
           onClick={() => scrollToSection(formRef)}
         >
           Contact Us Now
@@ -47,7 +47,7 @@ export default function Contact() {
         </h2>
         <div className="grid md:grid-cols-2 gap-12">
           {/* Form Section */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="bg-white rounded-3xl shadow-lg p-8">
             <form action="#" method="POST" className="space-y-6">
               <div>
                 <label htmlFor="name" className="text-lg font-semibold text-gray-700">Full Name</label>
@@ -97,7 +97,7 @@ export default function Contact() {
               </div>
               <button
                 type="submit"
-                className="bg-[#e82228] text-white py-3 px-8 rounded-lg font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
+                className="bg-[#e82228] text-white py-3 px-8 rounded-full font-medium shadow-lg hover:bg-red-600 transition-transform duration-300 transform hover:scale-105"
               >
                 Submit Message
               </button>
@@ -146,6 +146,7 @@ export default function Contact() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Office Location Map"
+                  className="rounded-3xl"
                 />
               </div>
             </div>
@@ -154,7 +155,7 @@ export default function Contact() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-20 px-8 rounded-lg shadow-xl">
+      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white text-center py-20 px-8 rounded-3xl shadow-xl">
         <h2 className="text-5xl font-bold mb-6">Let's Connect</h2>
         <p className="text-lg mb-10 max-w-4xl mx-auto">
           Have a question? We’re here to help! Reach out, and we’ll get back to you as soon as possible.
