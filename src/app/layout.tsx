@@ -19,10 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Main content with gradient merging effect */}
         <div
           style={{
-            backgroundImage: `
-              linear-gradient(to bottom, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 1)),
-              url('/images/V5.jpg')
-            `,
+            backgroundImage: `url('/images/V5.jpg')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
@@ -36,11 +33,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* Footer with a gradient effect */}
           <footer
-            style={{
-              background: `
-                linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
-              `,
-            }}
             className="text-center py-8">
             <Footer />
           </footer>

@@ -4,10 +4,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer
-      className="text-black py-12 font-inter relative"
-      style={{
-        background: `linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(245, 245, 245, 1) 80%, #ffffff 100%)`,
-      }}
+      className="text-black bg-gray-200 py-12 font-inter relative"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Row 1: Logo */}
