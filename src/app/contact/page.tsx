@@ -62,6 +62,7 @@ export default function Contact() {
                   className="w-full px-4 py-2 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e82228]"
                 />
               </div>
+              {/* test push content */}
               <div>
                 <label htmlFor="email" className="text-lg font-semibold text-gray-700">Email Address</label>
                 <input
