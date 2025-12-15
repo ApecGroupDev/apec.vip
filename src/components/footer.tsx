@@ -1,5 +1,6 @@
 import { SocialIcon } from 'react-social-icons';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -10,10 +11,13 @@ export default function Footer() {
         {/* Row 1: Logo */}
         <div className="flex justify-center mb-8">
           <Link href="/">
-            <img
-              src="https://theapecgroup.com/wp-content/uploads/2022/12/APEC-Since1989.png"
+            <Image
+              src="/images/APEC.webp"
               alt="APEC Logo"
-              className="transition-transform duration-300 ease-in-out transform hover:scale-105 max-w-[200px] h-auto"
+              width={200}
+              height={80} // adjust if needed
+              className="transition-transform duration-300 ease-in-out hover:scale-105 h-auto"
+              priority
             />
           </Link>
         </div>
