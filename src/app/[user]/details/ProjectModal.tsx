@@ -3,6 +3,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Project {
   id: number;
@@ -53,17 +54,25 @@ const ProjectModal = ({ isOpen, closeModal, project, placeholderImage }: Project
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   {/* Display multiple images */}
                   {[...Array(4)].map((_, index) => (
-                    <img
-                      key={index}
-                      src={project?.imageUrl || placeholderImage}
-                      alt={project?.name}
-                      className="w-full h-96 p-2 object-cover rounded-l-lg"
-                    />
+                    <div key={index} className="relative w-full h-96 p-2">
+                      <Image
+                        src={project?.imageUrl || placeholderImage}
+                        alt={project?.name || "Project image"}
+                        fill
+                        className="object-cover rounded-l-lg"
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        priority={index === 0}
+                      />
+                    </div>
                   ))}
+
                   <div className="p-6">
                     {project?.status && (
-                      <p className="text-blue-600 font-semibold mb-4">Status: {project.status}</p>
+                      <p className="text-blue-600 font-semibold mb-4">
+                        Status: {project.status}
+                      </p>
                     )}
+
                     <Link
                       href="/contact"
                       className="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow hover:bg-orange-600 transition"
