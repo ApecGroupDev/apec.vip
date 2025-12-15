@@ -6,6 +6,7 @@ import Projects from './Projects';
 import Quotes from './Quotes';
 import ScrollToTopButton from '@/components/scrollToTop';
 import Loading from '@/components/loading';
+import Image from 'next/image';
 
 interface UserData {
   name: string;
@@ -142,12 +143,19 @@ export default function Page({ params }: PageProps) {
       {!isVerified ? (
         <div
           style={{ backgroundImage: `url('/images/Artboard1-8.png')` }}
-          className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-xl w-full mb-72 text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-          <img
-            src="/images/VIP-gif.gif" // Replace with the actual path to your logo
-            alt="VIP Logo"
-            className="w-full lg:w-1/2 h-auto mx-auto mb-4" // Adjust the size and styling as needed
-          />
+          className="bg-cover bg-center bg-no-repeat shadow-lg rounded-3xl p-12 max-w-xl w-full mb-72 text-center border border-gray-200 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+        >
+          {/* Logo / GIF */}
+          <div className="relative w-full lg:w-1/2 h-40 mx-auto mb-4">
+            <Image
+              src="/images/VIP-gif.gif"
+              alt="VIP Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+
           <div className="w-full sm:w-3/5 mx-auto rounded-lg bg-gradient-to-r from-amber-600 to-amber-300 p-[2px]">
             <input
               type="text"
@@ -157,14 +165,19 @@ export default function Page({ params }: PageProps) {
               className="w-full bg-black border-transparent text-base sm:text-md text-center rounded-lg px-4 py-4 text-gray-800 focus:text-white focus:outline-none focus:ring-2 focus:ring-white transition-all"
             />
           </div>
+
           <button
             onClick={handleVerify}
             className="w-full sm:w-3/5 bg-red-600 text-white text-base sm:text-md py-4 mt-4 rounded-lg shadow-lg hover:bg-red-700 focus:outline-none transition-all duration-200 transform hover:scale-105"
           >
             Submit
           </button>
-          {verificationError && <p className="text-red-600 font-semibold mt-4">{verificationError}</p>}
+
+          {verificationError && (
+            <p className="text-red-600 font-semibold mt-4">{verificationError}</p>
+          )}
         </div>
+
       ) : (
         <div className="container mx-auto mb-5 px-4 pb-8 max-w-7xl">
           <ScrollToTopButton />
