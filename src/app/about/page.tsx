@@ -3,6 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation"
 import ScrollToTopButton from "@/components/scrollToTop";
+import Image from "next/image";
 
 export default function About() {
   const router = useRouter();
@@ -27,20 +28,32 @@ export default function About() {
       {/* History Section */}
       <section className="space-y-12">
         <h2 className="text-4xl font-bold text-center text-white">Our Legacy</h2>
+
         <div className="flex flex-col md:flex-row gap-12">
           <div className="flex-1 space-y-6">
             <p className="text-xl leading-relaxed text-gray-200">
-              Founded in 1989 as **Atlanta Petroleum Equipment Company**, we have grown from a small service operation into a leading provider of comprehensive petroleum solutions, including equipment installation, repair, and full operational support.
+              Founded in 1989 as <strong>Atlanta Petroleum Equipment Company</strong>, we
+              have grown from a small service operation into a leading provider of
+              comprehensive petroleum solutions, including equipment installation,
+              repair, and full operational support.
             </p>
+
             <p className="text-xl leading-relaxed text-gray-200">
-              With offices in **Atlanta, Georgia** and **Houston, Texas**, we’re proud to serve clients across the United States, delivering innovative solutions tailored to meet the evolving needs of the petroleum industry.
+              With offices in <strong>Atlanta, Georgia</strong> and{" "}
+              <strong>Houston, Texas</strong>, we’re proud to serve clients across the
+              United States, delivering innovative solutions tailored to meet the
+              evolving needs of the petroleum industry.
             </p>
           </div>
-          <div className="flex-1">
-            <img
-              src="https://via.placeholder.com/500x300" // Replace with real image
+
+          {/* Image */}
+          <div className="flex-1 relative h-[300px]">
+            <Image
+              src="https://via.placeholder.com/500x300"
               alt="APEC team"
-              className="rounded-3xl shadow-xl transform hover:scale-105 transition-transform duration-300"
+              fill
+              className="object-cover rounded-3xl shadow-xl transform hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>
@@ -96,12 +109,18 @@ export default function About() {
 
       {/* Expertise Section */}
       <section>
-        <h2 className="text-4xl font-bold text-center text-white mb-12">Our Expertise</h2>
+        <h2 className="text-4xl font-bold text-center text-white mb-12">
+          Our Expertise
+        </h2>
+
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <p className="text-xl text-gray-200 mb-6">
-              At APEC, we’re not just offering services — we’re driving the future of the petroleum industry. From modern installations to innovative marketing solutions, our goal is to empower businesses to excel.
+              At APEC, we’re not just offering services — we’re driving the future of
+              the petroleum industry. From modern installations to innovative
+              marketing solutions, our goal is to empower businesses to excel.
             </p>
+
             <ul className="text-xl text-gray-200 list-disc pl-8 space-y-4">
               <li><strong>Imaging & Canopies</strong></li>
               <li><strong>Environmental Compliance</strong></li>
@@ -112,11 +131,15 @@ export default function About() {
               <li><strong>Flexible Financing</strong></li>
             </ul>
           </div>
-          <div>
-            <img
-              src="https://via.placeholder.com/500x300" // Replace with real image
+
+          {/* Image */}
+          <div className="relative w-full h-[300px]">
+            <Image
+              src="https://via.placeholder.com/500x300"
               alt="APEC Services"
-              className="rounded-3xl shadow-xl transform hover:scale-105 transition-transform duration-300"
+              fill
+              className="object-cover rounded-3xl shadow-xl transform hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>
