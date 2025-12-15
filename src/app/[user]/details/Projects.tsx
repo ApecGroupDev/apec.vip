@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import ProjectModal from './ProjectModal'; // Adjust the path if necessary
 import Loading from '@/components/loading';
 import Progress from '@/components/progress';
+import Image from 'next/image';
 
 interface Project {
   id: number;
@@ -111,23 +112,37 @@ export default function Projects({ userId }: ProjectsProps) {
             key={project.id}
             className="bg-white shadow-lg rounded-lg overflow-hidden transform transition duration-300 hover:scale-105"
           >
-            <img
-              src={project.imageUrl || placeholderImage}
-              alt={project.name}
-              className="w-full h-48 object-cover"
-            />
+            {/* Image wrapper */}
+            <div className="relative w-full h-48">
+              <Image
+                src={project.imageUrl || placeholderImage}
+                alt={project.name}
+                fill
+                className="object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+              />
+            </div>
+
             <div className="p-4">
-              <h4 className="text-lg font-semibold text-red-600 truncate">{project.name}</h4>
-              <p className="text-sm text-gray-600 line-clamp-3">{project.description}</p>
+              <h4 className="text-lg font-semibold text-red-600 truncate">
+                {project.name}
+              </h4>
+
+              <p className="text-sm text-gray-600 line-clamp-3">
+                {project.description}
+              </p>
+
               {project.status && (
                 <span className="inline-block mt-3 px-3 py-1 text-xs font-medium text-white bg-blue-600 rounded-full">
                   {project.status}
                 </span>
               )}
-              {/* Render progress bar */}
+
+              {/* Progress bar */}
               <div className="mt-4">
                 <Progress progress={project.progress ?? 0} />
               </div>
+
               <button
                 onClick={() => openModal(project)}
                 className="block mt-4 text-sm font-semibold text-orange-500 hover:underline"
